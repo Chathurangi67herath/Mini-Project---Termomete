@@ -113,7 +113,7 @@ class _NewpasswordPageState extends State<NewpasswordPage> {
                     SizedBox(height: w * 0.1),
                     CustomSquareButton(
                       onTap: () {
-                        Navigator.of(context).pushNamed('/signin');
+                        Navigator.of(context).pushNamed('/successchange');
                       },
                       buttonText: 'Send',
                     ),

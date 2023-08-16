@@ -105,7 +105,9 @@ class _SignupPageState extends State<SignupPage> {
                     SizedBox(
                       height: 20,
                     ),
-                    PasswordInput(),
+                    PasswordInput(
+                      hintText: 'Re-enter the Password',
+                    ),
                     SizedBox(height: w * 0.05),
                     CustomSquareButton(
                       onTap: () {

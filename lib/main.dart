@@ -11,6 +11,7 @@ import 'profile.dart';
 import 'signup.dart';
 import 'signout.dart';
 import 'cpassword.dart';
+import 'successchange.dart';
 import 'verifyemail.dart';
 //import 'splash.dart';
 //import 'landing.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/cpassword': (BuildContext context) => new CpasswordPage(),
         '/verify': (BuildContext context) => new VerifyPage(),
         '/newpassword': (BuildContext context) => new NewpasswordPage(),
+        '/successchange': (BuildContext context) => new SuccessChangePage(),
       },
       title: 'Termomete',
       theme: ThemeData(
