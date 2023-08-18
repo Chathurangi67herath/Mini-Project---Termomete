@@ -20,6 +20,7 @@ class CustomRoundButton extends StatelessWidget {
 }
 
 //For normally used square button========================================================
+// ignore: must_be_immutable
 class CustomSquareButton extends StatelessWidget {
   CustomSquareButton({
     this.w,
@@ -85,6 +86,7 @@ class CustomSquareButton extends StatelessWidget {
 
 //Backward Button=================================================================
 
+// ignore: camel_case_types
 class backButton extends StatelessWidget {
   const backButton({
     Key? key,
@@ -106,6 +108,7 @@ class backButton extends StatelessWidget {
 }
 
 //login option button=====================================================================
+// ignore: camel_case_types
 class loginOption extends StatelessWidget {
   const loginOption({
     Key? key,

@@ -1,6 +1,6 @@
-import 'dart:async';
+//import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:termomete/landing.dart';
+//import 'package:termomete/landing.dart';
 
 import 'widget/Custom_button.dart';
 //import 'package:termomete/login.dart';
@@ -15,7 +15,7 @@ class SuccessChangePage extends StatefulWidget {
 class _SuccessChangePageState extends State<SuccessChangePage> {
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
+    //double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return MaterialApp(
       debugShowCheckedModeBanner: false,

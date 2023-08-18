@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 //input fields==============================================================
+// ignore: must_be_immutable, camel_case_types
 class inputField extends StatelessWidget {
   inputField({
     required this.hintText,

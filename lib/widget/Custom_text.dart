@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //head text=============================================================
 
+// ignore: must_be_immutable
 class CustomText extends StatelessWidget {
   CustomText({
     required this.text,
@@ -30,6 +31,7 @@ class CustomText extends StatelessWidget {
 }
 
 //edit input============================================================
+// ignore: must_be_immutable, camel_case_types
 class editInputTitle extends StatelessWidget {
   editInputTitle({
     required this.text,
