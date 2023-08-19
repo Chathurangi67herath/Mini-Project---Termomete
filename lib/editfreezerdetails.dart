@@ -4,14 +4,14 @@ import 'widget/Custom_button.dart';
 import 'widget/Custom_text.dart';
 import 'widget/Cutom_inputField.dart';
 
-class AddFreezerPage extends StatefulWidget {
-  const AddFreezerPage({Key? key}) : super(key: key);
+class EditFreezerPage extends StatefulWidget {
+  const EditFreezerPage({Key? key}) : super(key: key);
 
   @override
-  State<AddFreezerPage> createState() => _AddFreezerPageState();
+  State<EditFreezerPage> createState() => _EditFreezerPageState();
 }
 
-class _AddFreezerPageState extends State<AddFreezerPage> {
+class _EditFreezerPageState extends State<EditFreezerPage> {
   String dropdownvalue = 'Option 1';
   List<String> items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   @override
@@ -25,7 +25,7 @@ class _AddFreezerPageState extends State<AddFreezerPage> {
         leading: backButton(),
         centerTitle: true,
         title: CustomText(
-          text: 'Add New Freezer',
+          text: 'Edit Freezer Details',
         ),
         actions: [
           closebutton(),
@@ -91,7 +91,7 @@ class _AddFreezerPageState extends State<AddFreezerPage> {
             onTap: () {
               Navigator.of(context).pushNamed('/cprofile');
             },
-            buttonText: 'Save',
+            buttonText: 'Save Edited Details',
           ),
         ],
       ),

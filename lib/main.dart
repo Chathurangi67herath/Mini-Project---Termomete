@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 //import 'package:termomete/splash.dart';
 
 //import 'addfreezer.dart';
+//import 'addfreezer.dart';
 import 'createprofile.dart';
+import 'editfreezerdetails.dart';
 import 'freezerdetails.dart';
 import 'login.dart';
 import 'newpassword.dart';
@@ -36,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/verify': (BuildContext context) => new VerifyPage(),
         '/newpassword': (BuildContext context) => new NewpasswordPage(),
         '/successchange': (BuildContext context) => new SuccessChangePage(),
+        '/editfreezerdetails': (BuildContext context) => new EditFreezerPage(),
       },
       title: 'Termomete',
       theme: ThemeData(

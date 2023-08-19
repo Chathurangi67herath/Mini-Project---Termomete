@@ -102,7 +102,27 @@ class backButton extends StatelessWidget {
       onPressed: () {
         Navigator.pop(context);
       },
-      padding: EdgeInsets.only(left: 20.0, top: 10.0),
+      padding: EdgeInsets.only(
+        left: 20.0,
+      ),
+    );
+  }
+}
+
+//Close Button===================================================================
+// ignore: camel_case_types
+class closebutton extends StatelessWidget {
+  const closebutton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.close),
+      onPressed: () {
+        Navigator.pop(context);
+      },
     );
   }
 }

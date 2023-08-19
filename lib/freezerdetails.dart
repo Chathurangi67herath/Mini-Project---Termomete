@@ -40,9 +40,30 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                     ),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      backButton(),
+                      Row(
+                        children: [
+                          backButton(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 400, top: 20.0),
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: IconButton(
+                                icon: Icon(Icons.edit),
+                                color: Color.fromRGBO(11, 55, 120, 1),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed('/editfreezerdetails');
+
+                                  // Add your edit button's onPressed functionality here
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       SizedBox(
                         height: h * 0.10,
                       ),
