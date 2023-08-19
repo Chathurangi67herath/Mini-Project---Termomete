@@ -35,12 +35,12 @@ class CustomText extends StatelessWidget {
 class editInputTitle extends StatelessWidget {
   editInputTitle({
     required this.text,
-    required this.icon,
+    this.icon,
     Key? key,
   }) : super(key: key);
 
   String text;
-  IconData icon;
+  IconData? icon;
 
   @override
   Widget build(BuildContext context) {

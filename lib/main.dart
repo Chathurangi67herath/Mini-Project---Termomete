@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 //import 'addfreezer.dart';
 import 'createprofile.dart';
+import 'freezerdetails.dart';
 import 'login.dart';
 import 'newpassword.dart';
 import 'profile.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: NewpasswordPage(),
+      home: FreezerDetails(),
     );
   }
 }
