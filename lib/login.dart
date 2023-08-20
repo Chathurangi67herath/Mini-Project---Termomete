@@ -1,4 +1,3 @@
-//import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'widget/Custom_button.dart';
@@ -18,7 +17,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    //List images = ["google.png", "twitter.png", "fb.png"];
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
 

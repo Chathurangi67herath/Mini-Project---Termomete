@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'widget/Custom_button.dart';
 import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_passwordInput.dart';
 import 'widget/Custom_text.dart';
-import 'widget/Cutom_inputField.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);

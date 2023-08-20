@@ -1,4 +1,3 @@
-//import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'widget/Custom_button.dart';
@@ -18,8 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String _phoneNumber = "123-456-7890";
   String _address = "123 Main St, City";
 
-  String _profileImage =
-      'img/profile.jpg'; // Replace with the default profile image URL
+  String _profileImage = 'img/profile.jpg';
   String _coverPhoto = 'img/profilecover.jpg';
 
   // Text editing controllers for editing mode

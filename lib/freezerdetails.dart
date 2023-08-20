@@ -1,12 +1,9 @@
-//import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'widget/Custom_button.dart';
-//import 'widget/Custom_passwordInput.dart';
 import 'widget/Custom_measure.dart';
 import 'widget/Custom_text.dart';
 import 'widget/Cutom_inputField.dart';
-//import 'widget/Cutom_inputField.dart';
 
 class FreezerDetails extends StatefulWidget {
   const FreezerDetails({Key? key}) : super(key: key);

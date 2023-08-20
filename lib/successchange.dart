@@ -1,9 +1,6 @@
-//import 'dart:async';
 import 'package:flutter/material.dart';
-//import 'package:termomete/landing.dart';
 
 import 'widget/Custom_button.dart';
-//import 'package:termomete/login.dart';
 
 class SuccessChangePage extends StatefulWidget {
   const SuccessChangePage({Key? key}) : super(key: key);

@@ -5,7 +5,7 @@ class PasswordInput extends StatefulWidget {
   String? hintText;
 
   PasswordInput({
-    this.hintText, // Default hint text is "Password"
+    this.hintText,
     Key? key,
   }) : super(key: key);
 
