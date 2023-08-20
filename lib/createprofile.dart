@@ -137,7 +137,7 @@ class _CprofilePageState extends State<CprofilePage> {
                     SizedBox(height: w * 0.1),
                     CustomSquareButton(
                       onTap: () {
-                        Navigator.of(context).pushNamed('/profile');
+                        Navigator.of(context).pushNamed('/home');
                       },
                       buttonText: 'Set Profile',
                     ),
@@ -169,7 +169,7 @@ class _CprofilePageState extends State<CprofilePage> {
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).pushNamed('/signout');
+                        Navigator.of(context).pushNamed('/home');
                       },
                       child: Align(
                         alignment: Alignment.center,

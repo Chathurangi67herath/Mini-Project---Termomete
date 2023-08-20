@@ -42,6 +42,7 @@ class _LandingPageState extends State<LandingPage> {
                     },
                     buttonText: 'Sign Up',
                     buttonColor: Color.fromRGBO(0, 0, 0, 0.41),
+                    width: w * 0.4,
                   ),
                   SizedBox(
                     height: h * 0.03,
@@ -53,6 +54,7 @@ class _LandingPageState extends State<LandingPage> {
                       Navigator.of(context).pushNamed('/signin');
                     },
                     buttonText: 'Login',
+                    width: w * 0.4,
                   ),
                   SizedBox(height: w * 0.1),
                   Row(

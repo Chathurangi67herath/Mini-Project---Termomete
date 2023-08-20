@@ -270,7 +270,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
   Widget build(BuildContext context) {
     return Container(
       height: 50.0,
-      width: 450.0,
+      width: 400.0,
       decoration: BoxDecoration(
         color: Color.fromRGBO(217, 217, 217, 0.68),
         borderRadius: BorderRadius.circular(20),
@@ -312,3 +312,4 @@ class _CustomDropdownState extends State<CustomDropdown> {
     );
   }
 }
+

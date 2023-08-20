@@ -89,7 +89,7 @@ class _AddFreezerPageState extends State<AddFreezerPage> {
           ),
           CustomSquareButton(
             onTap: () {
-              Navigator.of(context).pushNamed('/cprofile');
+              Navigator.of(context).pushNamed('/home');
             },
             buttonText: 'Save',
           ),

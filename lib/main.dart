@@ -5,15 +5,21 @@ import 'package:flutter/material.dart';
 
 //import 'addfreezer.dart';
 //import 'addfreezer.dart';
+import 'addfreezer.dart';
 import 'createprofile.dart';
 import 'editfreezerdetails.dart';
-import 'freezerdetails.dart';
+//import 'freezerdetails.dart';
+import 'home.dart';
 import 'login.dart';
 import 'newpassword.dart';
+import 'notification.dart';
 import 'profile.dart';
+import 'search.dart';
+import 'setting.dart';
 import 'signup.dart';
 import 'signout.dart';
 import 'cpassword.dart';
+import 'splash.dart';
 import 'successchange.dart';
 import 'verifyemail.dart';
 //import 'splash.dart';
@@ -39,12 +45,17 @@ class MyApp extends StatelessWidget {
         '/newpassword': (BuildContext context) => new NewpasswordPage(),
         '/successchange': (BuildContext context) => new SuccessChangePage(),
         '/editfreezerdetails': (BuildContext context) => new EditFreezerPage(),
+        '/addnew': (BuildContext context) => new AddFreezerPage(),
+        '/home': (BuildContext context) => new HomePage(),
+        '/notification': (BuildContext context) => new NotificationPage(),
+        '/search': (BuildContext context) => new SearchPage(),
+        '/setting': (BuildContext context) => new SettingPage(),
       },
       title: 'Termomete',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: FreezerDetails(),
+      home: SearchPage(),
     );
   }
 }

@@ -144,7 +144,7 @@ class _VerifyPageState extends State<VerifyPage> {
                     SizedBox(height: w * 0.1),
                     CustomSquareButton(
                       onTap: () {
-                        Navigator.of(context).pushNamed('/signin');
+                        //Navigator.of(context).pushNamed('/signin');
                       },
                       buttonText: 'Resend the Code',
                       buttonColor: Colors.red,
