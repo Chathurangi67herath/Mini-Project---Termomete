@@ -139,6 +139,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               Positioned(
+                top: 10,
+                right: 10,
+                child: IconButton(
+                  icon: Icon(Icons.settings),
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/setting');
+                  },
+                ),
+              ),
+              Positioned(
                 top: h * 0.30 - 5,
                 left: 0,
                 width: w,

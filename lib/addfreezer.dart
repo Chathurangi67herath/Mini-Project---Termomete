@@ -83,6 +83,7 @@ class _AddFreezerPageState extends State<AddFreezerPage> {
           ),
           inputField(
             hintText: '',
+            maxLines: 3,
           ),
           SizedBox(
             height: h * 0.07,

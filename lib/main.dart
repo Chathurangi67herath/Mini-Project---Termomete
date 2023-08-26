@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'about.dart';
 import 'addfreezer.dart';
 import 'createprofile.dart';
 import 'editfreezerdetails.dart';
+import 'help.dart';
 import 'home.dart';
+import 'language.dart';
 import 'login.dart';
 import 'newpassword.dart';
 import 'notification.dart';
@@ -11,7 +14,6 @@ import 'profile.dart';
 import 'search.dart';
 import 'setting.dart';
 import 'signup.dart';
-import 'signout.dart';
 import 'cpassword.dart';
 import 'successchange.dart';
 import 'verifyemail.dart';
@@ -28,7 +30,6 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/signup': (BuildContext context) => new SignupPage(),
         '/signin': (BuildContext context) => new LoginPage(),
-        '/signout': (BuildContext context) => new SignoutPage(),
         '/cprofile': (BuildContext context) => new CprofilePage(),
         '/profile': (BuildContext context) => new ProfilePage(),
         '/cpassword': (BuildContext context) => new CpasswordPage(),
@@ -41,12 +42,15 @@ class MyApp extends StatelessWidget {
         '/notification': (BuildContext context) => new NotificationPage(),
         '/search': (BuildContext context) => new SearchPage(),
         '/setting': (BuildContext context) => new SettingPage(),
+        '/help': (BuildContext context) => new HelpPage(),
+        '/language': (BuildContext context) => new LanguagePage(),
+        '/about': (BuildContext context) => new AboutPage(),
       },
       title: 'Termomete',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SearchPage(),
+      home: HomePage(),
     );
   }
 }

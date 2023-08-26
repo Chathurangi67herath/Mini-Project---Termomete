@@ -34,7 +34,7 @@ class _PasswordInputState extends State<PasswordInput> {
       child: TextField(
         obscureText: passwordVisible,
         decoration: InputDecoration(
-          hintText: widget.hintText ?? 'Password',
+          labelText: widget.hintText ?? 'Password',
           hintStyle: TextStyle(
             // fontFamily: 'Poppins-Bold',
             color: Color.fromRGBO(11, 55, 120, 1),

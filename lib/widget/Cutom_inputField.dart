@@ -7,26 +7,29 @@ class inputField extends StatelessWidget {
     required this.hintText,
     this.prefixIcon,
     this.height,
+    this.maxLines,
     Key? key,
   }) : super(key: key);
 
   String hintText;
   Icon? prefixIcon;
   double? height;
+  int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? 50.0,
+      //height: height ?? 50.0,
       decoration: BoxDecoration(
         color: Color.fromRGBO(217, 217, 217, 0.68),
         borderRadius: BorderRadius.circular(20),
       ),
       width: 450,
       child: TextField(
+        maxLines: maxLines ?? 1,
         obscureText: false,
         decoration: InputDecoration(
-          hintText: hintText,
+          labelText: hintText,
           hintStyle: TextStyle(
             //fontFamily: 'Poppins-Bold',
             color: Color.fromRGBO(11, 55, 120, 1),
