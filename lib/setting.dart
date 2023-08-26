@@ -34,11 +34,11 @@ class _SettingPageState extends State<SettingPage> {
         'route': '/language',
         'icon': Icons.language,
       },
-      {
-        'name': 'Privacy Policy',
-        'route': '/privacy',
-        'icon': Icons.privacy_tip,
-      },
+      // {
+      //   'name': 'Privacy Policy',
+      //   'route': '/privacy',
+      //   'icon': Icons.privacy_tip,
+      // },
       {
         'name': 'About Us',
         'route': '/about',

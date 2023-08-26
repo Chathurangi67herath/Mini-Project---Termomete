@@ -4,6 +4,7 @@ import 'about.dart';
 import 'addfreezer.dart';
 import 'createprofile.dart';
 import 'editfreezerdetails.dart';
+import 'freezerdetails.dart';
 import 'help.dart';
 import 'home.dart';
 import 'language.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         '/help': (BuildContext context) => new HelpPage(),
         '/language': (BuildContext context) => new LanguagePage(),
         '/about': (BuildContext context) => new AboutPage(),
+        '/fdetails': (BuildContext context) => new FreezerDetails(),
       },
       title: 'Termomete',
       theme: ThemeData(
