@@ -48,13 +48,15 @@ class _NewpasswordPageState extends State<NewpasswordPage> {
                       backButton(),
                     ],
                   ),
-                  Positioned(
-                    child: CustomText(
-                      text: 'Create New Password',
+                  
+                Positioned(
+                      child: CustomText(
+                        text: 'Create New Password',
+                      ),
+                  
+                      //),
                     ),
-
-                    //),
-                  ),
+                  
                   SizedBox(
                     height: h * 0.1,
                   ),

@@ -41,12 +41,14 @@ class _CpasswordPageState extends State<CpasswordPage> {
                       backButton(),
                     ],
                   ),
-                  Positioned(
-                    child: CustomText(
-                      text: 'Change Password',
+                 
+                    Positioned(
+                      child: CustomText(
+                        text: 'Change Password',
+                      ),
+                      //),
                     ),
-                    //),
-                  ),
+                  
                   SizedBox(
                     height: h * 0.1,
                   ),
