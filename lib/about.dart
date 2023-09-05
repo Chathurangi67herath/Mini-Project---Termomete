@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
 import 'widget/Custom_button.dart';
 import 'widget/Custom_footerNavBar.dart';
 import 'widget/Custom_text.dart';
@@ -117,11 +114,11 @@ class _AboutPageState extends State<AboutPage> {
                       ),
                     ),
                     SizedBox(
-                      height: h * 0.15,
+                      height: h * 0.07,
                     ),
                     Container(
-                      width: w * 0.6,
-                      height: h * 0.13,
+                      width: w * 0.7,
+                      height: h * 0.15,
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(11, 55, 120, 1),
                         borderRadius: BorderRadius.circular(25.0),

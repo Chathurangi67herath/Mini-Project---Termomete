@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import 'widget/Custom_button.dart';
 import 'widget/Custom_footerNavBar.dart';
 import 'widget/Custom_text.dart';
@@ -67,7 +66,7 @@ class _LanguagePageState extends State<LanguagePage> {
                     ),
                     Container(
                       width: w * 0.5,
-                      height: h * 0.35,
+                      height: h * 0.4,
                       decoration: BoxDecoration(
                         color: Color.fromRGBO(217, 217, 217, 0.68),
                         borderRadius: BorderRadius.circular(20.0),

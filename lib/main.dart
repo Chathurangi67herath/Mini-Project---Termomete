@@ -7,6 +7,7 @@ import 'editfreezerdetails.dart';
 import 'freezerdetails.dart';
 import 'help.dart';
 import 'home.dart';
+import 'intro_search.dart';
 import 'language.dart';
 import 'login.dart';
 import 'newpassword.dart';
@@ -16,6 +17,7 @@ import 'search.dart';
 import 'setting.dart';
 import 'signup.dart';
 import 'cpassword.dart';
+import 'splash.dart';
 import 'successchange.dart';
 import 'verifyemail.dart';
 
@@ -47,12 +49,13 @@ class MyApp extends StatelessWidget {
         '/language': (BuildContext context) => new LanguagePage(),
         '/about': (BuildContext context) => new AboutPage(),
         '/fdetails': (BuildContext context) => new FreezerDetails(),
+        '/introsearch': (BuildContext context) => new Intro_search(),
       },
       title: 'Termomete',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
