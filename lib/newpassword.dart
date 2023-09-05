@@ -12,11 +12,22 @@ class NewpasswordPage extends StatefulWidget {
 }
 
 class _NewpasswordPageState extends State<NewpasswordPage> {
+  TextEditingController _conPwdController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   bool passwordVisible = false;
   @override
   void initState() {
     super.initState();
     passwordVisible = true;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _conPwdController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -101,12 +112,14 @@ class _NewpasswordPageState extends State<NewpasswordPage> {
                       height: h * 0.05,
                     ),
                     PasswordInput(
+                      controller: _passwordController,
                       hintText: 'Current Password',
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     PasswordInput(
+                      controller: _conPwdController,
                       hintText: 'New Password',
                     ),
                     SizedBox(height: w * 0.1),

@@ -13,6 +13,18 @@ class HelpPage extends StatefulWidget {
 }
 
 class _HelpPageState extends State<HelpPage> {
+  TextEditingController _name = TextEditingController();
+  TextEditingController _contact = TextEditingController();
+  TextEditingController _problem = TextEditingController();
+  @override
+  void dispose() {
+    _name.dispose();
+    _contact.dispose();
+    _problem.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   int _selectedIndex = 4;
   @override
   Widget build(BuildContext context) {
@@ -75,16 +87,19 @@ class _HelpPageState extends State<HelpPage> {
                         padding: const EdgeInsets.all(50.0),
                         child: Column(
                           children: [
-                            inputField(hintText: 'Your Name'),
+                            inputField(
+                                controller: _name, hintText: 'Your Name'),
                             SizedBox(
                               height: h * 0.01,
                             ),
                             inputField(
+                                controller: _contact,
                                 hintText: 'Contact Number Or Email Address'),
                             SizedBox(
                               height: h * 0.01,
                             ),
                             inputField(
+                              controller: _problem,
                               hintText: 'Your Problem',
                               maxLines: 5,
                             ),

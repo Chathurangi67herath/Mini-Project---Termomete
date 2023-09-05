@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 //input fields login sihgnup profile==============================================================
 // ignore: must_be_immutable, camel_case_types
-class inputField extends StatelessWidget {
+class inputField extends StatefulWidget {
+  TextEditingController controller = TextEditingController();
   inputField({
     required this.hintText,
     this.prefixIcon,
     this.height,
     this.maxLines,
+    required this.controller,
     Key? key,
   }) : super(key: key);
 
@@ -16,6 +18,11 @@ class inputField extends StatelessWidget {
   double? height;
   int? maxLines;
 
+  @override
+  State<inputField> createState() => _inputFieldState();
+}
+
+class _inputFieldState extends State<inputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,15 +33,16 @@ class inputField extends StatelessWidget {
       ),
       width: 450,
       child: TextField(
-        maxLines: maxLines ?? 1,
+        controller: widget.controller,
+        maxLines: widget.maxLines ?? 1,
         obscureText: false,
         decoration: InputDecoration(
-          labelText: hintText,
+          labelText: widget.hintText,
           hintStyle: TextStyle(
             //fontFamily: 'Poppins-Bold',
             color: Color.fromRGBO(11, 55, 120, 1),
           ),
-          prefixIcon: prefixIcon,
+          prefixIcon: widget.prefixIcon,
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide(color: Colors.white, width: 1.0)),

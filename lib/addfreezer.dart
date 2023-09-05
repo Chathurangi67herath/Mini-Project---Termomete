@@ -12,6 +12,16 @@ class AddFreezerPage extends StatefulWidget {
 }
 
 class _AddFreezerPageState extends State<AddFreezerPage> {
+  TextEditingController _freezerName = TextEditingController();
+  TextEditingController _items = TextEditingController();
+  @override
+  void dispose() {
+    _freezerName.dispose();
+    _items.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   String dropdownvalue = 'Option 1';
   List<String> items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   @override
@@ -41,6 +51,7 @@ class _AddFreezerPageState extends State<AddFreezerPage> {
             height: h * 0.02,
           ),
           inputField(
+            controller: _freezerName,
             hintText: '',
           ),
           SizedBox(
@@ -82,6 +93,7 @@ class _AddFreezerPageState extends State<AddFreezerPage> {
             height: h * 0.02,
           ),
           inputField(
+            controller: _items,
             hintText: '',
             maxLines: 3,
           ),

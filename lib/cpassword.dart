@@ -12,6 +12,16 @@ class CpasswordPage extends StatefulWidget {
 }
 
 class _CpasswordPageState extends State<CpasswordPage> {
+  TextEditingController _email = TextEditingController();
+  TextEditingController _items = TextEditingController();
+  @override
+  void dispose() {
+    _email.dispose();
+    _items.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -93,6 +103,7 @@ class _CpasswordPageState extends State<CpasswordPage> {
                       height: h * 0.05,
                     ),
                     inputField(
+                      controller: _email,
                       hintText: 'Enter Your Email Address',
                       prefixIcon: Icon(
                         Icons.email,

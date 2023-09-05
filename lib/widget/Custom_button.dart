@@ -100,7 +100,7 @@ class backButton extends StatelessWidget {
         color: Colors.white,
       ),
       onPressed: () {
-        Navigator.pop(context);
+        Navigator.pushReplacementNamed(context, '/home');
       },
       padding: EdgeInsets.only(
         left: 20.0,

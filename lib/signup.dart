@@ -13,6 +13,10 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _conPwdController = TextEditingController();
+
   bool passwordVisible = false;
   bool rememberMe = false;
 
@@ -90,6 +94,7 @@ class _SignupPageState extends State<SignupPage> {
                       height: 40,
                     ),
                     inputField(
+                      controller: _emailController,
                       hintText: 'Email Address',
                       prefixIcon: Icon(
                         Icons.email,
@@ -99,11 +104,14 @@ class _SignupPageState extends State<SignupPage> {
                     SizedBox(
                       height: 20,
                     ),
-                    PasswordInput(),
+                    PasswordInput(
+                      controller: _passwordController,
+                    ),
                     SizedBox(
                       height: 20,
                     ),
                     PasswordInput(
+                      controller: _conPwdController,
                       hintText: 'Re-enter the Password',
                     ),
                     SizedBox(height: w * 0.05),
@@ -164,7 +172,8 @@ class _SignupPageState extends State<SignupPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushNamed('/signin');
+                              Navigator.of(context)
+                                  .pushReplacementNamed('/signin');
                             },
                             child: Text(
                               "   Login",

@@ -92,10 +92,20 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: 25,
+                      ),
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           backButton(),
+                          IconButton(
+                            icon: Icon(Icons.settings),
+                            color: Colors.white,
+                            onPressed: () {
+                              Navigator.of(context).pushNamed('/setting');
+                            },
+                          ),
                         ],
                       ),
                       Positioned(
@@ -136,17 +146,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   ),
-                ),
-              ),
-              Positioned(
-                top: 10,
-                right: 10,
-                child: IconButton(
-                  icon: Icon(Icons.settings),
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/setting');
-                  },
                 ),
               ),
               Positioned(

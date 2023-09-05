@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1003457557785",
+    "firebase_url": "https://termomete-41240-default-rtdb.firebaseio.com",
+    "project_id": "termomete-41240",
+    "storage_bucket": "termomete-41240.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003457557785:android:2c0c75f60760d89b814188",
+        "android_client_info": {
+          "package_name": "com.example.termomete"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003457557785-po7gqahou8o887mh6dide56bton9sr8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAucMqexb6s4SicQCVkRNNOuxItBvHo2Jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003457557785-jsa7gp7o2hllksk4baarrfcrflas0p4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1003457557785:android:9b17d65cd9e3c74c814188",
+        "android_client_info": {
+          "package_name": "com.example.termomete1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1003457557785-po7gqahou8o887mh6dide56bton9sr8s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAucMqexb6s4SicQCVkRNNOuxItBvHo2Jk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1003457557785-jsa7gp7o2hllksk4baarrfcrflas0p4p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class PasswordInput extends StatefulWidget {
   String? hintText;
+  final TextEditingController controller;
 
   PasswordInput({
+    required this.controller,
     this.hintText,
     Key? key,
   }) : super(key: key);
@@ -23,6 +25,13 @@ class _PasswordInputState extends State<PasswordInput> {
   }
 
   @override
+  void dispose() {
+    widget.controller.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 50.0,
@@ -32,6 +41,7 @@ class _PasswordInputState extends State<PasswordInput> {
       ),
       width: 450,
       child: TextField(
+        controller: widget.controller,
         obscureText: passwordVisible,
         decoration: InputDecoration(
           labelText: widget.hintText ?? 'Password',

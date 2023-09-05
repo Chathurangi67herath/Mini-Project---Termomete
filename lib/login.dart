@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:termomete/services/login_func.dart';
 
 import 'widget/Custom_button.dart';
 import 'widget/Custom_passwordInput.dart';
@@ -14,6 +15,15 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool rememberMe = false;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +48,13 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  backButton(),
                   SizedBox(
                     height: h * 0.10,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 32.0, right: 150.0),
                     child: CustomText(
-                      text: 'Welcome back Termomete',
+                      text: 'Welcome to Termomete',
                       fontSize: 24,
                     ),
                   ),
@@ -83,6 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       height: 40,
                     ),
                     inputField(
+                      controller: _emailController,
                       hintText: 'Email Address',
                       prefixIcon: Icon(
                         Icons.email,
@@ -92,7 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: 20,
                     ),
-                    PasswordInput(),
+                    PasswordInput(
+                      controller: _passwordController,
+                    ),
                     SizedBox(
                       height: 5,
                     ),
@@ -133,8 +145,12 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: w * 0.05),
                     CustomSquareButton(
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/cprofile');
+                      onTap: () async {
+                        LoginFunction login = LoginFunction(
+                            email: _emailController.text,
+                            password: _passwordController.text);
+
+                        await login.login();
                       },
                       buttonText: 'Login',
                     ),
@@ -189,7 +205,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context).pushNamed('/signup');
+                              Navigator.of(context)
+                                  .pushReplacementNamed('/signup');
                             },
                             child: Text(
                               "   Sign Up",

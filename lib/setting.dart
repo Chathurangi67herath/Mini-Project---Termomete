@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:termomete/services/logOut_func.dart';
 
 import 'widget/Custom_button.dart';
 import 'widget/Custom_footerNavBar.dart';
@@ -198,7 +199,9 @@ class _SettingPageState extends State<SettingPage> {
             child: Center(
               child: CustomSquareButton(
                 onTap: () {
-                  Navigator.of(context).pushNamed('/signin');
+                  SignOut signOut = SignOut();
+                  signOut.signOut();
+                  Navigator.pushReplacementNamed(context, '/signin');
                 },
                 buttonText: 'Sign Out',
               ),

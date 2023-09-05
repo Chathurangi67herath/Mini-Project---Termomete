@@ -12,6 +12,20 @@ class CprofilePage extends StatefulWidget {
 }
 
 class _CprofilePageState extends State<CprofilePage> {
+  TextEditingController _fName = TextEditingController();
+  TextEditingController _lName = TextEditingController();
+  TextEditingController _phoneNumber = TextEditingController();
+  TextEditingController _address = TextEditingController();
+  @override
+  void dispose() {
+    _fName.dispose();
+    _lName.dispose();
+    _phoneNumber.dispose();
+    _address.dispose();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -97,6 +111,7 @@ class _CprofilePageState extends State<CprofilePage> {
                       height: h * 0.18,
                     ),
                     inputField(
+                      controller: _lName,
                       hintText: 'First Name',
                       prefixIcon: Icon(
                         Icons.person,
@@ -107,6 +122,7 @@ class _CprofilePageState extends State<CprofilePage> {
                       height: 20,
                     ),
                     inputField(
+                      controller: _fName,
                       hintText: 'Last Name',
                       prefixIcon: Icon(
                         Icons.person,
@@ -117,6 +133,7 @@ class _CprofilePageState extends State<CprofilePage> {
                       height: 20,
                     ),
                     inputField(
+                      controller: _phoneNumber,
                       hintText: 'Phone Number',
                       prefixIcon: Icon(
                         Icons.call,
@@ -127,6 +144,7 @@ class _CprofilePageState extends State<CprofilePage> {
                       height: 20,
                     ),
                     inputField(
+                      controller: _address,
                       hintText: 'Address',
                       prefixIcon: Icon(
                         Icons.location_on,

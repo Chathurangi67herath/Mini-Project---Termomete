@@ -60,7 +60,7 @@ class CustomFooterNavigationBar extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         onTabSelected(index);
-        Navigator.of(context).pushNamed(routeName);
+        Navigator.of(context).pushReplacementNamed(routeName);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
