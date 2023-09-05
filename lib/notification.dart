@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:termomete/components/freezer_details_card.dart';
-
-import 'freezerdetails.dart';
+import 'package:termomete/widget/freezer_details_card.dart';
 import 'widget/Custom_button.dart';
 import 'widget/Custom_footerNavBar.dart';
 import 'widget/Custom_text.dart';
