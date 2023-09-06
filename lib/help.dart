@@ -124,14 +124,7 @@ class _HelpPageState extends State<HelpPage> {
           ),
         ],
       ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: CustomFooterNavigationBar(),
     );
   }
 }

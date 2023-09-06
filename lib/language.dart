@@ -124,14 +124,7 @@ class _LanguagePageState extends State<LanguagePage> {
           ),
         ],
       ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: CustomFooterNavigationBar(),
     );
   }
 }

@@ -72,14 +72,7 @@ class _NotificationPageState extends State<NotificationPage> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: CustomFooterNavigationBar(),
     );
   }
 }

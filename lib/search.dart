@@ -103,14 +103,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: CustomFooterNavigationBar(),
     );
   }
 }

@@ -98,14 +98,7 @@ class _HomePageState extends State<HomePage> {
         },
         backgroundColor: Color.fromRGBO(11, 55, 120, 1),
       ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-      ),
+      bottomNavigationBar: CustomFooterNavigationBar(),
     );
   }
 }
