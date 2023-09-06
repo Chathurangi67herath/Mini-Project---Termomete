@@ -145,12 +145,18 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: w * 0.05),
                     CustomSquareButton(
-                      onTap: () async {
-                        LoginFunction login = LoginFunction(
-                            email: _emailController.text,
-                            password: _passwordController.text);
+                      onTap: () {
+                        if (_emailController.text.isNotEmpty &&
+                            _passwordController.text.length > 6) {
+                          final LoginFunction login = LoginFunction(
+                              context: context,
+                              email: _emailController.text,
+                              password: _passwordController.text);
 
-                        await login.login();
+                          login.login();
+                        } else {
+                          debugPrint("Email is empty or password is incalid");
+                        }
                       },
                       buttonText: 'Login',
                     ),

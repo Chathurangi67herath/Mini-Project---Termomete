@@ -60,7 +60,7 @@ class CustomFooterNavigationBar extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         onTabSelected(index);
-        Navigator.of(context).pushReplacementNamed(routeName);
+        Navigator.of(context).pushNamed(routeName);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -80,3 +80,61 @@ class CustomFooterNavigationBar extends StatelessWidget {
     );
   }
 }
+// import 'dart:html';
+
+// import 'package:flutter/material.dart';
+// import 'package:termomete/home.dart';
+// import 'package:termomete/notification.dart';
+// import 'package:termomete/profile.dart';
+// import 'package:termomete/search.dart';
+
+// class CustomFooterNavigationBar extends StatefulWidget {
+//   const CustomFooterNavigationBar({super.key});
+
+//   @override
+//   State<CustomFooterNavigationBar> createState() =>
+//       _CustomFooterNavigationBarState();
+// }
+
+// class _CustomFooterNavigationBarState extends State<CustomFooterNavigationBar> {
+//   int index = 0;
+//   final screens = [HomePage(), NotificationPage(), SearchPage(), ProfilePage()];
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: screens[index],
+//       bottomNavigationBar: NavigationBarTheme(
+//         data: NavigationBarThemeData(
+//             indicatorColor: Colors.blue.shade200,
+//             labelTextStyle: MaterialStateProperty.all(TextStyle(
+//               fontSize: 14,
+//               fontWeight: FontWeight.w500,
+//             ))),
+//         child: NavigationBar(
+//             backgroundColor: Color.fromRGBO(11, 55, 120, 1),
+//             selectedIndex: index,
+//             onDestinationSelected: (index) => setState(() {
+//                   this.index = index;
+//                 }),
+//             destinations: [
+//               NavigationDestination(
+//                 icon: Icon(Icons.home),
+//                 label: 'home',
+//               ),
+//               NavigationDestination(
+//                 icon: Icon(Icons.notifications),
+//                 label: 'notifications',
+//               ),
+//               NavigationDestination(
+//                 icon: Icon(Icons.search),
+//                 label: 'search',
+//               ),
+//               NavigationDestination(
+//                 icon: Icon(Icons.person),
+//                 label: 'person',
+//               ),
+//             ]),
+//       ),
+//     );
+//   }
+// }

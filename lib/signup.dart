@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:termomete/services/signUp_func.dart';
 
 import 'widget/Custom_button.dart';
 import 'widget/Custom_passwordInput.dart';
@@ -116,8 +117,22 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     SizedBox(height: w * 0.05),
                     CustomSquareButton(
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/signin');
+                      onTap: () async {
+                        if (_emailController.text.isNotEmpty &&
+                            _passwordController.text.length > 6) {
+                          if (_passwordController.text ==
+                              _conPwdController.text) {
+                            SignUp signup = SignUp(
+                                contecxt: context,
+                                email: _emailController.text,
+                                password: _passwordController.text);
+                            await signup.signUp();
+                          } else {
+                            debugPrint('Password doesnt match');
+                          }
+                        } else {
+                          debugPrint('Email is empty or Use Strong password');
+                        }
                       },
                       buttonText: 'Sign Up',
                     ),
