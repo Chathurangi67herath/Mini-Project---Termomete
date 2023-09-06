@@ -48,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  backButton(),
                   SizedBox(
                     height: h * 0.10,
                   ),

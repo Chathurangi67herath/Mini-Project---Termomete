@@ -44,7 +44,7 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                           backButton(),
                           Padding(
                             padding:
-                                const EdgeInsets.only(left: 400, top: 20.0),
+                                const EdgeInsets.only(left: 300, top: 20.0),
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
                               child: IconButton(
@@ -62,7 +62,7 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                         ],
                       ),
                       SizedBox(
-                        height: h * 0.10,
+                        height: h * 0.08,
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 32.0, right: 150.0),
@@ -94,15 +94,15 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                           height: h * 0.05,
                         ),
                         SizedBox(
-                          width: 120,
-                          height: 120,
+                          width: 110,
+                          height: 110,
                           child: CustomPaint(
                             painter: TemperatureLimitPainter(
                                 temperature: 20, maxTemperature: 30),
                           ),
                         ),
                         SizedBox(
-                          height: h * 0.05,
+                          height: h * 0.02,
                         ),
                         Row(
                           children: [
@@ -117,7 +117,7 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                           ],
                         ),
                         SizedBox(
-                          height: h * 0.05,
+                          height: h * 0.02,
                         ),
                         Row(
                           children: [
@@ -127,11 +127,12 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                             ),
                             detailsview(
                               text: '-0.4°F to -11.2°F ',
+                              width: w * 0.47,
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: h * 0.05,
+                          height: h * 0.02,
                         ),
                         Column(
                           children: [
@@ -141,13 +142,13 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                             ),
                             detailsview(
                               width: w * 0.8,
-                              height: h * 0.1,
+                              height: h * 0.07,
                               text: 'Vegetables, Fruits ',
                             ),
                           ],
                         ),
                         SizedBox(
-                          height: h * 0.02,
+                          height: h * 0.03,
                         ),
                         detailsview(
                           width: w * 0.9,

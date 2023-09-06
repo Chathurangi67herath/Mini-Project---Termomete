@@ -101,13 +101,14 @@ class _HelpPageState extends State<HelpPage> {
                             inputField(
                               controller: _problem,
                               hintText: 'Your Problem',
-                              maxLines: 5,
+                              maxLines: 3,
                             ),
                             SizedBox(
                               height: h * 0.03,
                             ),
                             CustomSquareButton(
-                                width: w * 0.3,
+                                width: w * 0.4,
+                                height: 40,
                                 onTap: () {
                                   Navigator.of(context).pushNamed('/cprofile');
                                 },

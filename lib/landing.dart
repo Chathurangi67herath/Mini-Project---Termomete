@@ -60,14 +60,26 @@ class _LandingPageState extends State<LandingPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomRoundButton(),
-                      CustomRoundButton(),
-                      CustomRoundButton(),
-                      CustomRoundButton(),
-                      CustomRoundButton(),
+                      // CustomRoundButton(),
+                      // CustomRoundButton(),
+                      // CustomRoundButton(),
+                      // CustomRoundButton(),
+                      // CustomRoundButton(),
                     ],
                   ),
                 ],
+              ),
+            ),
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/introsearch');
+              },
+              padding: EdgeInsets.only(
+                left: 20.0,
               ),
             ),
             Positioned(
