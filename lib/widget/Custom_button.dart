@@ -2,27 +2,18 @@ import 'package:flutter/material.dart';
 
 //For small round button=================================================================
 
-// ignore: must_be_immutable
 class CustomRoundButton extends StatelessWidget {
-  CustomRoundButton({
-    this.backgroundColor,
-    required this.onTap,
+  const CustomRoundButton({
     Key? key,
   }) : super(key: key);
-  Color? backgroundColor;
-  VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: CircleAvatar(
-          radius: 5,
-          backgroundColor:
-              backgroundColor ?? Color.fromRGBO(217, 217, 217, 0.68),
-        ),
+    return Container(
+      padding: const EdgeInsets.all(5.0),
+      child: CircleAvatar(
+        radius: 5,
+        backgroundColor: Color.fromRGBO(217, 217, 217, 0.68),
       ),
     );
   }
@@ -109,7 +100,7 @@ class backButton extends StatelessWidget {
         color: Colors.white,
       ),
       onPressed: () {
-        Navigator.pop(context);
+        Navigator.pushReplacementNamed(context, '/home');
       },
       padding: EdgeInsets.only(
         left: 20.0,

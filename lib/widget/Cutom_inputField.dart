@@ -1,5 +1,3 @@
-// ignore_for_file: camel_case_types, duplicate_ignore
-
 import 'package:flutter/material.dart';
 
 //input fields login sihgnup profile==============================================================
@@ -232,9 +230,9 @@ class _MultiRangeSliderWithButtonsState
                 updateValues(startValue - 1, endValue - 1);
               },
             ),
-            // SizedBox(width: 2.0),
+            SizedBox(width: 10.0),
             Container(
-              width: 250,
+              width: 320,
               child: RangeSlider(
                 values: RangeValues(startValue, endValue),
                 activeColor: Color.fromRGBO(11, 55, 120, 1),
@@ -246,7 +244,7 @@ class _MultiRangeSliderWithButtonsState
                 max: widget.maxValue,
               ),
             ),
-            // SizedBox(width: 2.0),
+            SizedBox(width: 10.0),
             IconButton(
               icon: Icon(Icons.add),
               color: Color.fromRGBO(11, 55, 120, 1),

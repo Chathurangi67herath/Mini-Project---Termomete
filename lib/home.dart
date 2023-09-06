@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:termomete/widget/freezer_details_card.dart';
+import 'package:termomete/components/freezer_details_card.dart';
+
+import 'freezerdetails.dart';
+
 import 'widget/Custom_footerNavBar.dart';
 import 'widget/Custom_text.dart';
 
@@ -20,6 +23,28 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: [
+          // Positioned(
+          //   top: 0,
+          //   left: 0,
+          //   width: w,
+          //   height: h,
+          //   child: Container(
+          //     decoration: BoxDecoration(
+          //       color: Color.fromRGBO(244, 246, 254, 1),
+          //     ),
+          //     child: Padding(
+          //       padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.center,
+          //         children: [
+          //           SizedBox(
+          //             height: h * 0.4,
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Container(
             height: h * 0.32,
             decoration: BoxDecoration(
@@ -88,14 +113,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+
           FreezerDetailsCard(w: w, h: h),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add, color: Colors.white),
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/addnew');
-        },
+        onPressed: () {},
         backgroundColor: Color.fromRGBO(11, 55, 120, 1),
       ),
       bottomNavigationBar: CustomFooterNavigationBar(),
