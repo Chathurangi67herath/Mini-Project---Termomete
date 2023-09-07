@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class PasswordInput extends StatefulWidget {
+  String? Function(String?)? validator;
   String? hintText;
   final TextEditingController controller;
 
   PasswordInput({
     required this.controller,
+    required this.validator,
     this.hintText,
     Key? key,
   }) : super(key: key);
@@ -40,7 +42,8 @@ class _PasswordInputState extends State<PasswordInput> {
         borderRadius: BorderRadius.circular(20),
       ),
       width: 450,
-      child: TextField(
+      child: TextFormField(
+        validator: widget.validator,
         controller: widget.controller,
         obscureText: passwordVisible,
         decoration: InputDecoration(

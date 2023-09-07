@@ -26,6 +26,7 @@ class _HelpPageState extends State<HelpPage> {
   }
 
   int _selectedIndex = 4;
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -34,7 +35,9 @@ class _HelpPageState extends State<HelpPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(11, 55, 120, 1),
-        leading: backButton(),
+        leading: backButton(
+          path: '/settings',
+        ),
         centerTitle: true,
         title: CustomText(
           text: 'Help',
@@ -85,35 +88,51 @@ class _HelpPageState extends State<HelpPage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(50.0),
-                        child: Column(
-                          children: [
-                            inputField(
-                                controller: _name, hintText: 'Your Name'),
-                            SizedBox(
-                              height: h * 0.01,
-                            ),
-                            inputField(
-                                controller: _contact,
-                                hintText: 'Contact Number Or Email Address'),
-                            SizedBox(
-                              height: h * 0.01,
-                            ),
-                            inputField(
-                              controller: _problem,
-                              hintText: 'Your Problem',
-                              maxLines: 3,
-                            ),
-                            SizedBox(
-                              height: h * 0.03,
-                            ),
-                            CustomSquareButton(
-                                width: w * 0.4,
-                                height: 40,
-                                onTap: () {
-                                  Navigator.of(context).pushNamed('/cprofile');
-                                },
-                                buttonText: 'Send')
-                          ],
+                        child: Form(
+                          key: formKey,
+                          child: Column(
+                            children: [
+                              inputField(
+                                  validator: (name) =>
+                                      name == null ? 'enter e' : null,
+                                  controller: _name,
+                                  hintText: 'Your Name'),
+                              SizedBox(
+                                height: h * 0.01,
+                              ),
+                              inputField(
+                                  validator: (num) => num!.isEmpty
+                                      ? "Enter contact num, or email"
+                                      : null,
+                                  controller: _contact,
+                                  hintText: 'Contact Number Or Email Address'),
+                              SizedBox(
+                                height: h * 0.01,
+                              ),
+                              inputField(
+                                validator: (num) =>
+                                    num!.isEmpty ? "Enter problem" : null,
+                                controller: _problem,
+                                hintText: 'Your Problem',
+                                maxLines: 3,
+                              ),
+                              SizedBox(
+                                height: h * 0.03,
+                              ),
+                              CustomSquareButton(
+                                  width: w * 0.4,
+                                  height: 40,
+                                  onTap: () {
+                                    final isValid =
+                                        formKey.currentState!.validate();
+                                    if (!isValid) return;
+
+                                    Navigator.of(context)
+                                        .pushNamed('/cprofile');
+                                  },
+                                  buttonText: 'Send')
+                            ],
+                          ),
                         ),
                       ),
                     ),

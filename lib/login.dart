@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:termomete/services/login_func.dart';
 
@@ -25,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -48,7 +50,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  backButton(),
+                  backButton(
+                    path: '/login',
+                  ),
                   SizedBox(
                     height: h * 0.10,
                   ),
@@ -75,158 +79,170 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: h * 0.02,
-                    ),
-                    Text(
-                      "Login to your account",
-                      style: TextStyle(
-                        color: Color.fromRGBO(118, 113, 113, 1),
-                        fontSize: 20,
-                        fontFamily: 'Poppins-Bold',
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: h * 0.02,
                       ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    inputField(
-                      controller: _emailController,
-                      hintText: 'Email Address',
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Color.fromRGBO(11, 55, 120, 1),
+                      Text(
+                        "Login to your account",
+                        style: TextStyle(
+                          color: Color.fromRGBO(118, 113, 113, 1),
+                          fontSize: 20,
+                          fontFamily: 'Poppins-Bold',
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    PasswordInput(
-                      controller: _passwordController,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: [
-                        Checkbox(
-                          value: rememberMe,
-                          onChanged: (newValue) {
-                            rememberMe = newValue!;
-                          },
-                          shape: CircleBorder(),
-                          activeColor: Colors.blue,
-                          side: BorderSide(color: Colors.blue),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      inputField(
+                        validator: (email) =>
+                            email != null && !EmailValidator.validate(email)
+                                ? 'Enter valid email'
+                                : null,
+                        controller: _emailController,
+                        hintText: 'Email Address',
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: Color.fromRGBO(11, 55, 120, 1),
                         ),
-                        Text(
-                          "Remember me",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.blueAccent,
-                          ),
-                        ),
-                        Expanded(
-                          child: Container(),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pushNamed('/cpassword');
-                          },
-                          child: Text(
-                            "Forget Password?",
-                            style: TextStyle(
-                              color: Colors.blueAccent,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: w * 0.05),
-                    CustomSquareButton(
-                      onTap: () {
-                        if (_emailController.text.isNotEmpty &&
-                            _passwordController.text.length > 6) {
-                          final LoginFunction login = LoginFunction(
-                              context: context,
-                              email: _emailController.text,
-                              password: _passwordController.text);
-
-                          login.login();
-                        } else {
-                          debugPrint("Email is empty or password is incalid");
-                        }
-                      },
-                      buttonText: 'Login',
-                    ),
-                    SizedBox(height: w * 0.03),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      PasswordInput(
+                        validator: (pass) => pass!.isEmpty || pass.length < 6
+                            ? "Enter valid password"
+                            : null,
+                        controller: _passwordController,
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
                         children: [
-                          Expanded(
-                            child: Divider(
-                              color: Color.fromRGBO(118, 113, 113, 1),
-                              thickness: 1.0,
-                              indent: 25.0,
-                            ),
+                          Checkbox(
+                            value: rememberMe,
+                            onChanged: (newValue) {
+                              rememberMe = newValue!;
+                            },
+                            shape: CircleBorder(),
+                            activeColor: Colors.blue,
+                            side: BorderSide(color: Colors.blue),
                           ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text(
-                              'or Login with',
-                              style: TextStyle(
-                                fontSize: 15.0,
-                                color: Color.fromRGBO(118, 113, 113, 1),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              color: Color.fromRGBO(118, 113, 113, 1),
-                              thickness: 1.0,
-                              endIndent: 25.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(height: w * 0.03),
-                    loginOption(
-                        images: ["google.png", "twitter.png", "fb.png"]),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(height: 2),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
                           Text(
-                            "Don’t have account?",
+                            "Remember me",
                             style: TextStyle(
-                                color: Colors.grey[500], fontSize: 14),
+                              fontSize: 15,
+                              color: Colors.blueAccent,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(),
                           ),
                           GestureDetector(
                             onTap: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/signup');
+                              Navigator.of(context).pushNamed('/cpassword');
                             },
                             child: Text(
-                              "   Sign Up",
+                              "Forget Password?",
                               style: TextStyle(
-                                  color: Colors.blueAccent,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                                color: Colors.blueAccent,
+                                fontSize: 15,
+                              ),
                             ),
                           ),
                         ],
                       ),
-                    ),
-                  ],
+                      SizedBox(height: w * 0.05),
+                      CustomSquareButton(
+                        onTap: () {
+                          final isValid = formKey.currentState!.validate();
+                          if (!isValid) return;
+                          if (_emailController.text.isNotEmpty &&
+                              _passwordController.text.length > 6) {
+                            final LoginFunction login = LoginFunction(
+                                context: context,
+                                email: _emailController.text,
+                                password: _passwordController.text);
+
+                            login.login();
+                          } else {
+                            debugPrint("Email is empty or password is incalid");
+                          }
+                        },
+                        buttonText: 'Login',
+                      ),
+                      SizedBox(height: w * 0.03),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                color: Color.fromRGBO(118, 113, 113, 1),
+                                thickness: 1.0,
+                                indent: 25.0,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Text(
+                                'or Login with',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Color.fromRGBO(118, 113, 113, 1),
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              child: Divider(
+                                color: Color.fromRGBO(118, 113, 113, 1),
+                                thickness: 1.0,
+                                endIndent: 25.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: w * 0.03),
+                      loginOption(
+                          images: ["google.png", "twitter.png", "fb.png"]),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      SizedBox(height: 2),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Don’t have account?",
+                              style: TextStyle(
+                                  color: Colors.grey[500], fontSize: 14),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/signup');
+                              },
+                              child: Text(
+                                "   Sign Up",
+                                style: TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

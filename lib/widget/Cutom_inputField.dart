@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable, camel_case_types
 class inputField extends StatefulWidget {
   TextEditingController controller = TextEditingController();
+  String? Function(String?)? validator;
   inputField({
+    required this.validator,
     required this.hintText,
     this.prefixIcon,
     this.height,
@@ -34,7 +36,8 @@ class _inputFieldState extends State<inputField> {
         borderRadius: BorderRadius.circular(20),
       ),
       width: 450,
-      child: TextField(
+      child: TextFormField(
+        validator: widget.validator,
         controller: widget.controller,
         maxLines: widget.maxLines ?? 1,
         obscureText: false,

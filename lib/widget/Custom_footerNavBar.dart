@@ -89,6 +89,8 @@ class CustomFooterNavigationBar extends StatelessWidget {
 // import 'package:termomete/search.dart';
 
 // class CustomFooterNavigationBar extends StatefulWidget {
+
+
 //   const CustomFooterNavigationBar({super.key});
 
 //   @override

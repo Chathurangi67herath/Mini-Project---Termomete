@@ -30,7 +30,9 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(11, 55, 120, 1),
-        leading: backButton(),
+        leading: backButton(
+          path: '/bnavigation',
+        ),
         centerTitle: true,
         title: CustomText(
           text: 'Search',
@@ -102,14 +104,6 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
       ),
     );
   }

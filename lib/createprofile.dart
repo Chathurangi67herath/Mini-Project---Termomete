@@ -26,6 +26,7 @@ class _CprofilePageState extends State<CprofilePage> {
     super.dispose();
   }
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -51,7 +52,9 @@ class _CprofilePageState extends State<CprofilePage> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      backButton(),
+                      backButton(
+                        path: '/bnavigation',
+                      ),
                     ],
                   ),
                   Positioned(
@@ -104,61 +107,73 @@ class _CprofilePageState extends State<CprofilePage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: h * 0.18,
-                    ),
-                    inputField(
-                      controller: _lName,
-                      hintText: 'First Name',
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Color.fromRGBO(11, 55, 120, 1),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: h * 0.18,
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    inputField(
-                      controller: _fName,
-                      hintText: 'Last Name',
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Color.fromRGBO(11, 55, 120, 1),
+                      inputField(
+                        validator: (name) =>
+                            name == null ? 'enter first name' : null,
+                        controller: _lName,
+                        hintText: 'First Name',
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Color.fromRGBO(11, 55, 120, 1),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    inputField(
-                      controller: _phoneNumber,
-                      hintText: 'Phone Number',
-                      prefixIcon: Icon(
-                        Icons.call,
-                        color: Color.fromRGBO(11, 55, 120, 1),
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    inputField(
-                      controller: _address,
-                      hintText: 'Address',
-                      prefixIcon: Icon(
-                        Icons.location_on,
-                        color: Color.fromRGBO(11, 55, 120, 1),
+                      inputField(
+                        validator: (name) =>
+                            name == null ? 'enter last name' : null,
+                        controller: _fName,
+                        hintText: 'Last Name',
+                        prefixIcon: Icon(
+                          Icons.person,
+                          color: Color.fromRGBO(11, 55, 120, 1),
+                        ),
                       ),
-                    ),
-                    SizedBox(height: w * 0.1),
-                    CustomSquareButton(
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/home');
-                      },
-                      buttonText: 'Set Profile',
-                    ),
-                  ],
+                      SizedBox(
+                        height: 20,
+                      ),
+                      inputField(
+                        validator: (name) =>
+                            name == null ? 'phone number' : null,
+                        controller: _phoneNumber,
+                        hintText: 'Phone Number',
+                        prefixIcon: Icon(
+                          Icons.call,
+                          color: Color.fromRGBO(11, 55, 120, 1),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      inputField(
+                        validator: (name) => name == null ? 'Address' : null,
+                        controller: _address,
+                        hintText: 'Address',
+                        prefixIcon: Icon(
+                          Icons.location_on,
+                          color: Color.fromRGBO(11, 55, 120, 1),
+                        ),
+                      ),
+                      SizedBox(height: w * 0.1),
+                      CustomSquareButton(
+                        onTap: () {
+                          final isValid = formKey.currentState!.validate();
+                          if (!isValid) return;
+                          Navigator.of(context).pushNamed('/home');
+                        },
+                        buttonText: 'Set Profile',
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:termomete/widget/navigation.dart';
 
 import 'about.dart';
 import 'addfreezer.dart';
@@ -62,6 +63,7 @@ class _MyAppState extends State<MyApp> {
           '/language': (BuildContext context) => new LanguagePage(),
           '/about': (BuildContext context) => new AboutPage(),
           '/fdetails': (BuildContext context) => new FreezerDetails(),
+          '/bnavigation': (context) => CustomFooterNavigationBarNew(),
         },
         title: 'Termomete',
         theme: ThemeData(
@@ -81,11 +83,11 @@ class CurrentPAge extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return HomePage();
+            return CustomFooterNavigationBarNew();
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
           } else {
-            return LoginPage();
+            return AddFreezerPage();
           }
         },
       ),

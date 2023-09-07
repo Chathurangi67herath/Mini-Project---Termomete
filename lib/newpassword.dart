@@ -30,6 +30,7 @@ class _NewpasswordPageState extends State<NewpasswordPage> {
     super.dispose();
   }
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -55,7 +56,9 @@ class _NewpasswordPageState extends State<NewpasswordPage> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      backButton(),
+                      backButton(
+                        path: '/login',
+                      ),
                     ],
                   ),
                   Positioned(
@@ -91,45 +94,57 @@ class _NewpasswordPageState extends State<NewpasswordPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: h * 0.05,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Please enter your current passowrd and new password  ",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Color.fromRGBO(11, 55, 120, 1),
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: h * 0.05,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Please enter your current passowrd and new password  ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color.fromRGBO(11, 55, 120, 1),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: h * 0.05,
-                    ),
-                    PasswordInput(
-                      controller: _passwordController,
-                      hintText: 'Current Password',
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    PasswordInput(
-                      controller: _conPwdController,
-                      hintText: 'New Password',
-                    ),
-                    SizedBox(height: w * 0.1),
-                    CustomSquareButton(
-                      onTap: () {
-                        Navigator.of(context).pushNamed('/successchange');
-                      },
-                      buttonText: 'Send',
-                    ),
-                  ],
+                      SizedBox(
+                        height: h * 0.05,
+                      ),
+                      PasswordInput(
+                        validator: (pass) => pass!.isEmpty || pass.length < 6
+                            ? "Enter valid password"
+                            : null,
+                        controller: _passwordController,
+                        hintText: 'Current Password',
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      PasswordInput(
+                        validator: (pass) => pass!.isEmpty || pass.length < 6
+                            ? "Enter valid password"
+                            : null,
+                        controller: _conPwdController,
+                        hintText: 'New Password',
+                      ),
+                      SizedBox(height: w * 0.1),
+                      CustomSquareButton(
+                        onTap: () {
+                          final isValid = formKey.currentState!.validate();
+                          if (!isValid) return;
+
+                          Navigator.of(context).pushNamed('/successchange');
+                        },
+                        buttonText: 'Send',
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:termomete/services/signUp_func.dart';
 
@@ -27,6 +28,7 @@ class _SignupPageState extends State<SignupPage> {
     passwordVisible = true;
   }
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -50,7 +52,9 @@ class _SignupPageState extends State<SignupPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  backButton(),
+                  backButton(
+                    path: '/login',
+                  ),
                   SizedBox(
                     height: h * 0.10,
                   ),
@@ -77,131 +81,145 @@ class _SignupPageState extends State<SignupPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: h * 0.02,
-                    ),
-                    Text(
-                      "Create your new account",
-                      style: TextStyle(
-                        color: Color.fromRGBO(118, 113, 113, 1),
-                        fontSize: 20,
-                        fontFamily: 'Poppins-Bold',
+                child: Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: h * 0.02,
                       ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    inputField(
-                      controller: _emailController,
-                      hintText: 'Email Address',
-                      prefixIcon: Icon(
-                        Icons.email,
-                        color: Color.fromRGBO(11, 55, 120, 1),
+                      Text(
+                        "Create your new account",
+                        style: TextStyle(
+                          color: Color.fromRGBO(118, 113, 113, 1),
+                          fontSize: 20,
+                          fontFamily: 'Poppins-Bold',
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    PasswordInput(
-                      controller: _passwordController,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    PasswordInput(
-                      controller: _conPwdController,
-                      hintText: 'Re-enter the Password',
-                    ),
-                    SizedBox(height: w * 0.05),
-                    CustomSquareButton(
-                      onTap: () async {
-                        if (_emailController.text.isNotEmpty &&
-                            _passwordController.text.length > 6) {
-                          if (_passwordController.text ==
-                              _conPwdController.text) {
-                            SignUp signup = SignUp(
-                                contecxt: context,
-                                email: _emailController.text,
-                                password: _passwordController.text);
-                            await signup.signUp();
+                      SizedBox(
+                        height: 40,
+                      ),
+                      inputField(
+                        validator: (email) =>
+                            email != null && !EmailValidator.validate(email)
+                                ? 'Enter valid email'
+                                : null,
+                        controller: _emailController,
+                        hintText: 'Email Address',
+                        prefixIcon: Icon(
+                          Icons.email,
+                          color: Color.fromRGBO(11, 55, 120, 1),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      PasswordInput(
+                        validator: (pass) => pass!.isEmpty || pass.length < 6
+                            ? "Enter valid password"
+                            : null,
+                        controller: _passwordController,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      PasswordInput(
+                        validator: (pass) => pass!.isEmpty ||
+                                _emailController.text != _conPwdController.text
+                            ? "Password does not match"
+                            : null,
+                        controller: _conPwdController,
+                        hintText: 'Re-enter the Password',
+                      ),
+                      SizedBox(height: w * 0.05),
+                      CustomSquareButton(
+                        onTap: () async {
+                          if (_emailController.text.isNotEmpty &&
+                              _passwordController.text.length > 6) {
+                            if (_passwordController.text ==
+                                _conPwdController.text) {
+                              SignUp signup = SignUp(
+                                  contecxt: context,
+                                  email: _emailController.text,
+                                  password: _passwordController.text);
+                              await signup.signUp();
+                            } else {
+                              debugPrint('Password doesnt match');
+                            }
                           } else {
-                            debugPrint('Password doesnt match');
+                            debugPrint('Email is empty or Use Strong password');
                           }
-                        } else {
-                          debugPrint('Email is empty or Use Strong password');
-                        }
-                      },
-                      buttonText: 'Sign Up',
-                    ),
-                    SizedBox(height: w * 0.03),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: Divider(
-                              color: Color.fromRGBO(118, 113, 113, 1),
-                              thickness: 1.0,
-                              indent: 25.0,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text(
-                              'or Sign Up with',
-                              style: TextStyle(
-                                fontSize: 15.0,
+                        },
+                        buttonText: 'Sign Up',
+                      ),
+                      SizedBox(height: w * 0.03),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Divider(
                                 color: Color.fromRGBO(118, 113, 113, 1),
+                                thickness: 1.0,
+                                indent: 25.0,
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Divider(
-                              color: Color.fromRGBO(118, 113, 113, 1),
-                              thickness: 1.0,
-                              endIndent: 25.0,
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16.0),
+                              child: Text(
+                                'or Sign Up with',
+                                style: TextStyle(
+                                  fontSize: 15.0,
+                                  color: Color.fromRGBO(118, 113, 113, 1),
+                                ),
+                              ),
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Divider(
+                                color: Color.fromRGBO(118, 113, 113, 1),
+                                thickness: 1.0,
+                                endIndent: 25.0,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: w * 0.03),
-                    loginOption(
-                        images: ["google.png", "twitter.png", "fb.png"]),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    SizedBox(height: 2),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Already have an account?",
-                            style: TextStyle(
-                                color: Colors.grey[500], fontSize: 14),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context)
-                                  .pushReplacementNamed('/signin');
-                            },
-                            child: Text(
-                              "   Login",
+                      SizedBox(height: w * 0.03),
+                      loginOption(
+                          images: ["google.png", "twitter.png", "fb.png"]),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      SizedBox(height: 2),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Already have an account?",
                               style: TextStyle(
-                                  color: Colors.blueAccent,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                                  color: Colors.grey[500], fontSize: 14),
                             ),
-                          ),
-                        ],
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushReplacementNamed('/signin');
+                              },
+                              child: Text(
+                                "   Login",
+                                style: TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
