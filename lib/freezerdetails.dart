@@ -41,7 +41,9 @@ class _FreezerDetailsState extends State<FreezerDetails> {
                     children: [
                       Row(
                         children: [
-                          backButton(),
+                          backButton(
+                            path: '/home',
+                          ),
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 300, top: 20.0),

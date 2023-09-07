@@ -97,7 +97,9 @@ class CustomSquareButton extends StatelessWidget {
 
 // ignore: camel_case_types
 class backButton extends StatelessWidget {
-  const backButton({
+  String path;
+  backButton({
+    required this.path,
     Key? key,
   }) : super(key: key);
 
@@ -109,7 +111,7 @@ class backButton extends StatelessWidget {
         color: Colors.white,
       ),
       onPressed: () {
-        Navigator.pop(context);
+        Navigator.of(context).popAndPushNamed(path);
       },
       padding: EdgeInsets.only(
         left: 20.0,

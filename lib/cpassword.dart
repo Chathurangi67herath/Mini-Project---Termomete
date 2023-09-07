@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 import 'widget/Custom_button.dart';
@@ -22,6 +23,7 @@ class _CpasswordPageState extends State<CpasswordPage> {
     super.dispose();
   }
 
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -42,31 +44,36 @@ class _CpasswordPageState extends State<CpasswordPage> {
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Column(
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      backButton(),
-                    ],
-                  ),
-                  Positioned(
-                    child: CustomText(
-                      text: 'Change Password',
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        backButton(
+                          path: '/settings',
+                        ),
+                      ],
                     ),
-                    //),
-                  ),
-                  SizedBox(
-                    height: h * 0.1,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 32.0, right: 150.0),
-                    child: CustomText(
-                      text: 'If you want to change your password ',
-                      fontSize: 13,
+                    Positioned(
+                      child: CustomText(
+                        text: 'Change Password',
+                      ),
+                      //),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: h * 0.1,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 32.0, right: 150.0),
+                      child: CustomText(
+                        text: 'If you want to change your password ',
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -103,6 +110,11 @@ class _CpasswordPageState extends State<CpasswordPage> {
                       height: h * 0.05,
                     ),
                     inputField(
+                      validator: (email) =>
+                          email != null && !EmailValidator.validate(email)
+                              ? 'Enter valid email'
+                              : null,
+                      // validator: (name) => name == null ? 'enter freezer name': null ,
                       controller: _email,
                       hintText: 'Enter Your Email Address',
                       prefixIcon: Icon(
@@ -113,6 +125,8 @@ class _CpasswordPageState extends State<CpasswordPage> {
                     SizedBox(height: w * 0.1),
                     CustomSquareButton(
                       onTap: () {
+                        final isValid = formKey.currentState!.validate();
+                        if (!isValid) return;
                         Navigator.of(context).pushNamed('/verify');
                       },
                       buttonText: 'Send',

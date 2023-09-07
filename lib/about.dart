@@ -21,7 +21,9 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(11, 55, 120, 1),
-        leading: backButton(),
+        leading: backButton(
+          path: '/setting',
+        ),
         centerTitle: true,
         title: CustomText(
           text: 'About Us',

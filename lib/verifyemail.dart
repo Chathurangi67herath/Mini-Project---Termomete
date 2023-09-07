@@ -37,7 +37,9 @@ class _VerifyPageState extends State<VerifyPage> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      backButton(),
+                      backButton(
+                        path: '/login',
+                      ),
                     ],
                   ),
                   Positioned(
