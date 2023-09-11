@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/freezerdetails.dart';
+import 'package:termomete/widget/Temparature_condition.dart';
 
 class FreezerDetailsCard extends StatelessWidget {
-  const FreezerDetailsCard({
+  FreezerDetailsCard({
     super.key,
     required this.w,
     required this.h,
@@ -10,6 +11,10 @@ class FreezerDetailsCard extends StatelessWidget {
 
   final double w;
   final double h;
+
+  final condition_h = TempCondition.temCondition['high'];
+  final condition_n = TempCondition.temCondition['normal'];
+  final condition_l = TempCondition.temCondition['low'];
 
   @override
   Widget build(BuildContext context) {
@@ -80,18 +85,17 @@ class FreezerDetailsCard extends StatelessWidget {
                             Padding(
                               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: Text(
-                                'High',
+                                condition_h!['condition'],
                                 style: TextStyle(
-                                  color: Colors.red,
+                                  color: condition_h!['color'],
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
                                 ),
                               ),
                             ),
                             Text(
-                              ' 😑',
+                              condition_h!['icon'],
                               style: TextStyle(
-                                color: Colors.red,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
