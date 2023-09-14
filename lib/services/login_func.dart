@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:termomete/main.dart';
+import '../main.dart';
 
 class LoginFunction {
   String email;

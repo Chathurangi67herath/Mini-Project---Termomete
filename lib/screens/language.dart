@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_footerNavBar.dart';
+import '/widget/Custom_text.dart';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({Key? key}) : super(key: key);

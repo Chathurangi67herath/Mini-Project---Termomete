@@ -1,9 +1,9 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
-import 'widget/Cutom_inputField.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
+import '/widget/Cutom_inputField.dart';
 
 class CpasswordPage extends StatefulWidget {
   const CpasswordPage({Key? key}) : super(key: key);

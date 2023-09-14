@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'intro_checktemp.dart';
 import 'intro_receivealert.dart';
-import 'intro_search.dart';
 import 'intro_settemp.dart';
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
+import 'landing.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
 
 // ignore: camel_case_types
-class Intro_checkTemp extends StatefulWidget {
-  const Intro_checkTemp({super.key});
+class Intro_search extends StatefulWidget {
+  const Intro_search({super.key});
 
   @override
-  State<Intro_checkTemp> createState() => _Intro_checkTempState();
+  State<Intro_search> createState() => _Intro_searchState();
 }
 
 // ignore: camel_case_types
-class _Intro_checkTempState extends State<Intro_checkTemp> {
+class _Intro_searchState extends State<Intro_search> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -32,7 +33,7 @@ class _Intro_checkTempState extends State<Intro_checkTemp> {
                 bottomRight: Radius.circular(40.0),
               ),
               image: DecorationImage(
-                image: AssetImage("img/intro_checktemp.jpg"),
+                image: AssetImage("img/intro_search.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -45,7 +46,7 @@ class _Intro_checkTempState extends State<Intro_checkTemp> {
                 Padding(
                   padding: EdgeInsets.only(left: 32.0),
                   child: CustomText(
-                    text: 'Check temperature ',
+                    text: 'Search all',
                     fontSize: 24,
                   ),
                 ),
@@ -58,7 +59,7 @@ class _Intro_checkTempState extends State<Intro_checkTemp> {
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Text(
-              "You can check the temperature in the particular freezer",
+              "You can see temperature state in all freezers from one page ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
@@ -70,20 +71,34 @@ class _Intro_checkTempState extends State<Intro_checkTemp> {
             children: [
               SizedBox(height: w * 0.05),
               Image(
-                image: AssetImage("img/checktemp.png"),
-                width: w * 0.3,
+                image: AssetImage("img/search.png"),
+                width: w * 0.45,
               )
             ],
           ),
-          SizedBox(height: w * 0.07),
+          SizedBox(height: w * 0.1),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Intro_settemp(),
+                  ));
+                },
+                child: CircleAvatar(
+                  radius: 15,
+                  backgroundColor: Color.fromRGBO(11, 55, 120, 1),
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
               SizedBox(
-                width: w * 0.27,
+                width: w * 0.2,
               ),
               CustomRoundButton(
-                backgroundColor: Color.fromRGBO(11, 55, 120, 1),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Intro_checkTemp(),
@@ -105,6 +120,7 @@ class _Intro_checkTempState extends State<Intro_checkTemp> {
                 },
               ),
               CustomRoundButton(
+                backgroundColor: Color.fromRGBO(11, 55, 120, 1),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Intro_search(),
@@ -117,7 +133,7 @@ class _Intro_checkTempState extends State<Intro_checkTemp> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Intro_alert(),
+                    builder: (context) => LandingPage(),
                   ));
                 },
                 child: CircleAvatar(

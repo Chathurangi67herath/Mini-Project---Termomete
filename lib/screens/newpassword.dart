@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_passwordInput.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_passwordInput.dart';
+import '/widget/Custom_text.dart';
 
 class NewpasswordPage extends StatefulWidget {
   const NewpasswordPage({Key? key}) : super(key: key);

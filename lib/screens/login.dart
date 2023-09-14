@@ -1,31 +1,29 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:termomete/services/signUp_func.dart';
+import 'package:termomete/services/login_func.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_passwordInput.dart';
-import 'widget/Custom_text.dart';
-import 'widget/Cutom_inputField.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_passwordInput.dart';
+import '/widget/Custom_text.dart';
+import '/widget/Cutom_inputField.dart';
 
-class SignupPage extends StatefulWidget {
-  const SignupPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
+  bool rememberMe = false;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  TextEditingController _conPwdController = TextEditingController();
-
-  bool passwordVisible = false;
-  bool rememberMe = false;
-
   @override
-  void initState() {
-    super.initState();
-    passwordVisible = true;
+  void dispose() {
+    // TODO: implement dispose
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   final formKey = GlobalKey<FormState>();
@@ -45,7 +43,7 @@ class _SignupPageState extends State<SignupPage> {
             child: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("img/signup.jpg"),
+                  image: AssetImage("img/loging.jpg"),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -61,7 +59,7 @@ class _SignupPageState extends State<SignupPage> {
                   Padding(
                     padding: EdgeInsets.only(left: 32.0, right: 150.0),
                     child: CustomText(
-                      text: 'Get Started  to Sign Up!',
+                      text: 'Welcome to Termomete',
                       fontSize: 24,
                     ),
                   ),
@@ -90,7 +88,7 @@ class _SignupPageState extends State<SignupPage> {
                         height: h * 0.02,
                       ),
                       Text(
-                        "Create your new account",
+                        "Login to your account",
                         style: TextStyle(
                           color: Color.fromRGBO(118, 113, 113, 1),
                           fontSize: 20,
@@ -122,36 +120,61 @@ class _SignupPageState extends State<SignupPage> {
                         controller: _passwordController,
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 5,
                       ),
-                      PasswordInput(
-                        validator: (pass) => pass!.isEmpty ||
-                                _emailController.text != _conPwdController.text
-                            ? "Password does not match"
-                            : null,
-                        controller: _conPwdController,
-                        hintText: 'Re-enter the Password',
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: rememberMe,
+                            onChanged: (newValue) {
+                              rememberMe = newValue!;
+                            },
+                            shape: CircleBorder(),
+                            activeColor: Colors.blue,
+                            side: BorderSide(color: Colors.blue),
+                          ),
+                          Text(
+                            "Remember me",
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Colors.blueAccent,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).pushNamed('/cpassword');
+                            },
+                            child: Text(
+                              "Forget Password?",
+                              style: TextStyle(
+                                color: Colors.blueAccent,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                       SizedBox(height: w * 0.05),
                       CustomSquareButton(
-                        onTap: () async {
+                        onTap: () {
+                          final isValid = formKey.currentState!.validate();
+                          if (!isValid) return;
                           if (_emailController.text.isNotEmpty &&
                               _passwordController.text.length > 6) {
-                            if (_passwordController.text ==
-                                _conPwdController.text) {
-                              SignUp signup = SignUp(
-                                  contecxt: context,
-                                  email: _emailController.text,
-                                  password: _passwordController.text);
-                              await signup.signUp();
-                            } else {
-                              debugPrint('Password doesnt match');
-                            }
+                            final LoginFunction login = LoginFunction(
+                                context: context,
+                                email: _emailController.text,
+                                password: _passwordController.text);
+
+                            login.login();
                           } else {
-                            debugPrint('Email is empty or Use Strong password');
+                            debugPrint("Email is empty or password is incalid");
                           }
                         },
-                        buttonText: 'Sign Up',
+                        buttonText: 'Login',
                       ),
                       SizedBox(height: w * 0.03),
                       Container(
@@ -169,7 +192,7 @@ class _SignupPageState extends State<SignupPage> {
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 16.0),
                               child: Text(
-                                'or Sign Up with',
+                                'or Login with',
                                 style: TextStyle(
                                   fontSize: 15.0,
                                   color: Color.fromRGBO(118, 113, 113, 1),
@@ -190,7 +213,7 @@ class _SignupPageState extends State<SignupPage> {
                       loginOption(
                           images: ["google.png", "twitter.png", "fb.png"]),
                       SizedBox(
-                        height: 5,
+                        height: 15,
                       ),
                       SizedBox(height: 2),
                       Container(
@@ -198,17 +221,17 @@ class _SignupPageState extends State<SignupPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Already have an account?",
+                              "Don’t have account?",
                               style: TextStyle(
                                   color: Colors.grey[500], fontSize: 14),
                             ),
                             GestureDetector(
                               onTap: () {
                                 Navigator.of(context)
-                                    .pushReplacementNamed('/signin');
+                                    .pushReplacementNamed('/signup');
                               },
                               child: Text(
-                                "   Login",
+                                "   Sign Up",
                                 style: TextStyle(
                                     color: Colors.blueAccent,
                                     fontSize: 14,

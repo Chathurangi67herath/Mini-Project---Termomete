@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/widget/freezer_details_card.dart';
-import 'widget/Custom_button.dart';
-import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_searchbar.dart';
-import 'widget/Custom_text.dart';
-import 'widget/Cutom_inputField.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_footerNavBar.dart';
+import '/widget/Custom_searchbar.dart';
+import '/widget/Custom_text.dart';
+import '/widget/Cutom_inputField.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);

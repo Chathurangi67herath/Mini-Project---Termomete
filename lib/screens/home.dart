@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/widget/freezer_details_card.dart';
-import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_footerNavBar.dart';
+import '/widget/Custom_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -89,13 +89,6 @@ class _HomePageState extends State<HomePage> {
           ),
           FreezerDetailsCard(w: w, h: h),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add, color: Colors.white),
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/addnew');
-        },
-        backgroundColor: Color.fromRGBO(11, 55, 120, 1),
       ),
     );
   }

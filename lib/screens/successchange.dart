@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widget/Custom_button.dart';
+import '/widget/Custom_button.dart';
 
 class SuccessChangePage extends StatefulWidget {
   const SuccessChangePage({Key? key}) : super(key: key);

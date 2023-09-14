@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/widget/Custom_button.dart';
 
-import 'widget/Custom_text.dart';
+import '/widget/Custom_text.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
