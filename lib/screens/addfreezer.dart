@@ -1,19 +1,22 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
-import 'widget/Cutom_inputField.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
+import '/widget/Cutom_inputField.dart';
 
-class EditFreezerPage extends StatefulWidget {
-  const EditFreezerPage({Key? key}) : super(key: key);
+class AddFreezerPage extends StatefulWidget {
+  const AddFreezerPage({Key? key}) : super(key: key);
 
   @override
-  State<EditFreezerPage> createState() => _EditFreezerPageState();
+  State<AddFreezerPage> createState() => _AddFreezerPageState();
 }
 
-class _EditFreezerPageState extends State<EditFreezerPage> {
+class _AddFreezerPageState extends State<AddFreezerPage> {
   TextEditingController _freezerName = TextEditingController();
   TextEditingController _items = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   void dispose() {
     _freezerName.dispose();
@@ -22,7 +25,6 @@ class _EditFreezerPageState extends State<EditFreezerPage> {
     super.dispose();
   }
 
-  final formKey = GlobalKey<FormState>();
   String dropdownvalue = 'Option 1';
   List<String> items = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
   @override
@@ -33,12 +35,10 @@ class _EditFreezerPageState extends State<EditFreezerPage> {
       backgroundColor: Color.fromRGBO(244, 246, 254, 1),
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(11, 55, 120, 1),
-        leading: backButton(
-          path: '/home',
-        ),
+        leading: backButton(path: '/bnavigation'),
         centerTitle: true,
         title: CustomText(
-          text: 'Edit Freezer Details',
+          text: 'Add New Freezer',
         ),
         actions: [
           closebutton(),
@@ -58,7 +58,8 @@ class _EditFreezerPageState extends State<EditFreezerPage> {
                 height: h * 0.01,
               ),
               inputField(
-                validator: (name) => name == null ? 'enter freezer name' : null,
+                validator: (name) =>
+                    name!.isEmpty ? 'enter freezer name' : null,
                 controller: _freezerName,
                 hintText: '',
               ),
@@ -101,22 +102,26 @@ class _EditFreezerPageState extends State<EditFreezerPage> {
                 height: h * 0.01,
               ),
               inputField(
-                validator: (name) => name == null ? 'enter items' : null,
+                validator: (items) {
+                  if (items!.isEmpty) {
+                    return 'enter items';
+                  } else
+                    return null;
+                },
                 controller: _items,
                 hintText: '',
-                maxLines: 2,
+                maxLines: 3,
               ),
               SizedBox(
-                height: h * 0.07,
+                height: h * 0.05,
               ),
               CustomSquareButton(
                 onTap: () {
                   final isValid = formKey.currentState!.validate();
                   if (!isValid) return;
-
-                  Navigator.of(context).pushNamed('/cprofile');
+                  Navigator.of(context).pushNamed('/home');
                 },
-                buttonText: 'Save Edited Details',
+                buttonText: 'Save',
               ),
             ],
           ),

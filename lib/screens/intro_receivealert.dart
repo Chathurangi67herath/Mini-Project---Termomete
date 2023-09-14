@@ -1,21 +1,22 @@
+// ignore: duplicate_ignore
+// ignore_for_file: camel_case_types, duplicate_ignore
+
 import 'package:flutter/material.dart';
 import 'intro_checktemp.dart';
-import 'intro_receivealert.dart';
+import 'intro_search.dart';
 import 'intro_settemp.dart';
-import 'landing.dart';
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
 
 // ignore: camel_case_types
-class Intro_search extends StatefulWidget {
-  const Intro_search({super.key});
+class Intro_alert extends StatefulWidget {
+  const Intro_alert({super.key});
 
   @override
-  State<Intro_search> createState() => _Intro_searchState();
+  State<Intro_alert> createState() => _Intro_alertState();
 }
 
-// ignore: camel_case_types
-class _Intro_searchState extends State<Intro_search> {
+class _Intro_alertState extends State<Intro_alert> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -33,7 +34,7 @@ class _Intro_searchState extends State<Intro_search> {
                 bottomRight: Radius.circular(40.0),
               ),
               image: DecorationImage(
-                image: AssetImage("img/intro_search.jpg"),
+                image: AssetImage("img/intro_receivealert.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -41,12 +42,12 @@ class _Intro_searchState extends State<Intro_search> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: h * 0.3,
+                  height: h * 0.27,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 32.0),
                   child: CustomText(
-                    text: 'Search all',
+                    text: 'Receive notifications about freezers ',
                     fontSize: 24,
                   ),
                 ),
@@ -59,7 +60,7 @@ class _Intro_searchState extends State<Intro_search> {
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Text(
-              "You can see temperature state in all freezers from one page ",
+              "You can receive the alerts when temperature is low or high to particular limit ",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
@@ -69,21 +70,20 @@ class _Intro_searchState extends State<Intro_search> {
           ),
           Column(
             children: [
-              SizedBox(height: w * 0.05),
               Image(
-                image: AssetImage("img/search.png"),
+                image: AssetImage("img/alert1.png"),
                 width: w * 0.45,
               )
             ],
           ),
-          SizedBox(height: w * 0.1),
+          SizedBox(height: w * 0.12),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Intro_settemp(),
+                    builder: (context) => Intro_checkTemp(),
                   ));
                 },
                 child: CircleAvatar(
@@ -106,6 +106,7 @@ class _Intro_searchState extends State<Intro_search> {
                 },
               ),
               CustomRoundButton(
+                backgroundColor: Color.fromRGBO(11, 55, 120, 1),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Intro_alert(),
@@ -120,7 +121,6 @@ class _Intro_searchState extends State<Intro_search> {
                 },
               ),
               CustomRoundButton(
-                backgroundColor: Color.fromRGBO(11, 55, 120, 1),
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Intro_search(),
@@ -133,7 +133,7 @@ class _Intro_searchState extends State<Intro_search> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => LandingPage(),
+                    builder: (context) => Intro_settemp(),
                   ));
                 },
                 child: CircleAvatar(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:termomete/home.dart';
-import 'package:termomete/notification.dart';
-import 'package:termomete/profile.dart';
-import 'package:termomete/search.dart';
+import '../screens/home.dart';
+import '../screens/notification.dart';
+import '../screens/profile.dart';
+import '../screens/search.dart';
 
 class CustomFooterNavigationBarNew extends StatefulWidget {
   const CustomFooterNavigationBarNew({super.key});

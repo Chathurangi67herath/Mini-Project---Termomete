@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/widget/Cutom_inputField.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_footerNavBar.dart';
+import '/widget/Custom_text.dart';
 
 class HelpPage extends StatefulWidget {
   const HelpPage({Key? key}) : super(key: key);

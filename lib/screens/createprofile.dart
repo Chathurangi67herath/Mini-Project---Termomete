@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
-import 'widget/Cutom_inputField.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
+import '/widget/Cutom_inputField.dart';
 
 class CprofilePage extends StatefulWidget {
   const CprofilePage({Key? key}) : super(key: key);

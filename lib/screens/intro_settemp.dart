@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'intro_checktemp.dart';
 import 'intro_receivealert.dart';
 import 'intro_search.dart';
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
 
 class Intro_settemp extends StatefulWidget {
   const Intro_settemp({super.key});

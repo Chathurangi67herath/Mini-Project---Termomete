@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/widget/freezer_details_card.dart';
-import 'widget/Custom_button.dart';
-import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_footerNavBar.dart';
+import '/widget/Custom_text.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({Key? key}) : super(key: key);

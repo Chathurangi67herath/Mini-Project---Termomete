@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:termomete/services/logOut_func.dart';
 
-import 'widget/Custom_button.dart';
-import 'widget/Custom_footerNavBar.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_footerNavBar.dart';
+import '/widget/Custom_text.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({Key? key}) : super(key: key);

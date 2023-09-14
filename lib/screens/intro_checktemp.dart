@@ -1,22 +1,20 @@
-// ignore: duplicate_ignore
-// ignore_for_file: camel_case_types, duplicate_ignore
-
 import 'package:flutter/material.dart';
-import 'intro_checktemp.dart';
+import 'intro_receivealert.dart';
 import 'intro_search.dart';
 import 'intro_settemp.dart';
-import 'widget/Custom_button.dart';
-import 'widget/Custom_text.dart';
+import '/widget/Custom_button.dart';
+import '/widget/Custom_text.dart';
 
 // ignore: camel_case_types
-class Intro_alert extends StatefulWidget {
-  const Intro_alert({super.key});
+class Intro_checkTemp extends StatefulWidget {
+  const Intro_checkTemp({super.key});
 
   @override
-  State<Intro_alert> createState() => _Intro_alertState();
+  State<Intro_checkTemp> createState() => _Intro_checkTempState();
 }
 
-class _Intro_alertState extends State<Intro_alert> {
+// ignore: camel_case_types
+class _Intro_checkTempState extends State<Intro_checkTemp> {
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
@@ -34,7 +32,7 @@ class _Intro_alertState extends State<Intro_alert> {
                 bottomRight: Radius.circular(40.0),
               ),
               image: DecorationImage(
-                image: AssetImage("img/intro_receivealert.jpg"),
+                image: AssetImage("img/intro_checktemp.jpg"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -42,12 +40,12 @@ class _Intro_alertState extends State<Intro_alert> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: h * 0.27,
+                  height: h * 0.3,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 32.0),
                   child: CustomText(
-                    text: 'Receive notifications about freezers ',
+                    text: 'Check temperature ',
                     fontSize: 24,
                   ),
                 ),
@@ -60,7 +58,7 @@ class _Intro_alertState extends State<Intro_alert> {
           Padding(
             padding: const EdgeInsets.all(18.0),
             child: Text(
-              "You can receive the alerts when temperature is low or high to particular limit ",
+              "You can check the temperature in the particular freezer",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 18,
@@ -70,43 +68,29 @@ class _Intro_alertState extends State<Intro_alert> {
           ),
           Column(
             children: [
+              SizedBox(height: w * 0.05),
               Image(
-                image: AssetImage("img/alert1.png"),
-                width: w * 0.45,
+                image: AssetImage("img/checktemp.png"),
+                width: w * 0.3,
               )
             ],
           ),
-          SizedBox(height: w * 0.12),
+          SizedBox(height: w * 0.07),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Intro_checkTemp(),
-                  ));
-                },
-                child: CircleAvatar(
-                  radius: 15,
-                  backgroundColor: Color.fromRGBO(11, 55, 120, 1),
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
               SizedBox(
-                width: w * 0.2,
-              ),
-              CustomRoundButton(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Intro_checkTemp(),
-                  ));
-                },
+                width: w * 0.27,
               ),
               CustomRoundButton(
                 backgroundColor: Color.fromRGBO(11, 55, 120, 1),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Intro_checkTemp(),
+                  ));
+                },
+              ),
+              CustomRoundButton(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Intro_alert(),
@@ -133,7 +117,7 @@ class _Intro_alertState extends State<Intro_alert> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Intro_settemp(),
+                    builder: (context) => Intro_alert(),
                   ));
                 },
                 child: CircleAvatar(
