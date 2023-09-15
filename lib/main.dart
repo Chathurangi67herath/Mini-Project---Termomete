@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:termomete/screens/onboarding_screen.dart';
+import 'package:termomete/services/google_sign_in.dart';
 import 'package:termomete/widget/navigation.dart';
 
 import 'screens/about.dart';
@@ -50,36 +53,39 @@ final navigatorKey = GlobalKey<NavigatorState>();
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        navigatorKey: navigatorKey,
-        debugShowCheckedModeBanner: false,
-        routes: <String, WidgetBuilder>{
-          '/signup': (BuildContext context) => new SignupPage(),
-          '/signin': (BuildContext context) => new LoginPage(),
-          '/cprofile': (BuildContext context) => new CprofilePage(),
-          '/profile': (BuildContext context) => new ProfilePage(),
-          '/cpassword': (BuildContext context) => new CpasswordPage(),
-          '/verify': (BuildContext context) => new VerifyPage(),
-          '/newpassword': (BuildContext context) => new NewpasswordPage(),
-          '/successchange': (BuildContext context) => new SuccessChangePage(),
-          '/editfreezerdetails': (BuildContext context) =>
-              new EditFreezerPage(),
-          '/addnew': (BuildContext context) => new AddFreezerPage(),
-          '/home': (BuildContext context) => new HomePage(),
-          '/notification': (BuildContext context) => new NotificationPage(),
-          '/search': (BuildContext context) => new SearchPage(),
-          '/setting': (BuildContext context) => new SettingPage(),
-          '/help': (BuildContext context) => new HelpPage(),
-          '/language': (BuildContext context) => new LanguagePage(),
-          '/about': (BuildContext context) => new AboutPage(),
-          '/fdetails': (BuildContext context) => new FreezerDetails(),
-          '/bnavigation': (context) => CustomFooterNavigationBarNew(),
-        },
-        title: 'Termomete',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: widget.showHome ? CurrentPage() : OnboardingPage());
+    return ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+      child: MaterialApp(
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
+          routes: <String, WidgetBuilder>{
+            '/signup': (BuildContext context) => new SignupPage(),
+            '/signin': (BuildContext context) => new LoginPage(),
+            '/cprofile': (BuildContext context) => new CprofilePage(),
+            '/profile': (BuildContext context) => new ProfilePage(),
+            '/cpassword': (BuildContext context) => new CpasswordPage(),
+            '/verify': (BuildContext context) => new VerifyPage(),
+            '/newpassword': (BuildContext context) => new NewpasswordPage(),
+            '/successchange': (BuildContext context) => new SuccessChangePage(),
+            '/editfreezerdetails': (BuildContext context) =>
+                new EditFreezerPage(),
+            '/addnew': (BuildContext context) => new AddFreezerPage(),
+            '/home': (BuildContext context) => new HomePage(),
+            '/notification': (BuildContext context) => new NotificationPage(),
+            '/search': (BuildContext context) => new SearchPage(),
+            '/setting': (BuildContext context) => new SettingPage(),
+            '/help': (BuildContext context) => new HelpPage(),
+            '/language': (BuildContext context) => new LanguagePage(),
+            '/about': (BuildContext context) => new AboutPage(),
+            '/fdetails': (BuildContext context) => new FreezerDetails(),
+            '/bnavigation': (context) => CustomFooterNavigationBarNew(),
+          },
+          title: 'Termomete',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: widget.showHome ? CurrentPage() : OnboardingPage()),
+    );
   }
 }
 
@@ -96,8 +102,12 @@ class CurrentPage extends StatelessWidget {
             return CustomFooterNavigationBarNew();
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text("Something went Wrong"),
+            );
           } else {
-            return HomePage();
+            return LoginPage();
           }
         },
       ),

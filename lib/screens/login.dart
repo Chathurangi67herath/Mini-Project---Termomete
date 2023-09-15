@@ -1,5 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:termomete/services/google_sign_in.dart';
 import 'package:termomete/services/login_func.dart';
 
 import '/widget/Custom_button.dart';
@@ -18,19 +20,22 @@ class _LoginPageState extends State<LoginPage> {
   bool rememberMe = false;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   _emailController.dispose();
+  //   _passwordController.dispose();
+  //   super.dispose();
+  // }
 
   final formKey = GlobalKey<FormState>();
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
+    final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
 
     return Scaffold(
       body: Stack(
@@ -50,11 +55,8 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  backButton(
-                    path: '/login',
-                  ),
                   SizedBox(
-                    height: h * 0.10,
+                    height: h * 0.20,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 32.0, right: 150.0),
@@ -210,8 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                       SizedBox(height: w * 0.03),
-                      loginOption(
-                          images: ["google.png", "twitter.png", "fb.png"]),
+                      loginOption(context: context),
                       SizedBox(
                         height: 15,
                       ),

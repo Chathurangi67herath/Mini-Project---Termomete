@@ -1,4 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:provider/provider.dart';
+import 'package:termomete/services/google_sign_in.dart';
 
 //For small round button=================================================================
 
@@ -141,30 +145,26 @@ class closebutton extends StatelessWidget {
 //login option button=====================================================================
 // ignore: camel_case_types
 class loginOption extends StatelessWidget {
-  const loginOption({
+  BuildContext? context;
+  loginOption({
+    this.context,
     Key? key,
-    required this.images,
   }) : super(key: key);
-
-  final List images;
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: List<Widget>.generate(3, (index) {
-        return Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: CircleAvatar(
-            radius: 25,
-            backgroundColor: Color.fromRGBO(217, 217, 217, 0.68),
-            child: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.white,
-              backgroundImage: AssetImage("img/" + images[index]),
-            ),
-          ),
-        );
-      }),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SignInButton(
+          Buttons.Google,
+          onPressed: () {
+            final provider =
+                Provider.of<GoogleSignInProvider>(context, listen: false);
+            provider.signInWithGoogle(context);
+          },
+        ),
+      ],
     );
   }
 }

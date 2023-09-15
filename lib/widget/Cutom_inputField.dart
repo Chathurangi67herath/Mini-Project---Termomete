@@ -222,6 +222,8 @@ class _MultiRangeSliderWithButtonsState
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -237,7 +239,7 @@ class _MultiRangeSliderWithButtonsState
             ),
             // SizedBox(width: 2.0),
             Container(
-              width: 250,
+              width: w * 0.60,
               child: RangeSlider(
                 values: RangeValues(startValue, endValue),
                 activeColor: Color.fromRGBO(11, 55, 120, 1),
