@@ -90,6 +90,13 @@ class _HomePageState extends State<HomePage> {
           FreezerDetailsCard(w: w, h: h),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add, color: Colors.white),
+        onPressed: () {
+          Navigator.pushReplacementNamed(context, '/addnew');
+        },
+        backgroundColor: Color.fromRGBO(11, 55, 120, 1),
+      ),
     );
   }
 }

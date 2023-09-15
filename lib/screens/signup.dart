@@ -52,11 +52,8 @@ class _SignupPageState extends State<SignupPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  backButton(
-                    path: '/login',
-                  ),
                   SizedBox(
-                    height: h * 0.10,
+                    height: h * 0.20,
                   ),
                   Padding(
                     padding: EdgeInsets.only(left: 32.0, right: 150.0),
@@ -187,8 +184,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                       SizedBox(height: w * 0.03),
-                      loginOption(
-                          images: ["google.png", "twitter.png", "fb.png"]),
+                      loginOption(),
                       SizedBox(
                         height: 5,
                       ),

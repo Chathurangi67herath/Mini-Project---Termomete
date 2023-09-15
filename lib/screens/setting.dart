@@ -201,9 +201,7 @@ class _SettingPageState extends State<SettingPage> {
             child: Center(
               child: CustomSquareButton(
                 onTap: () {
-                  SignOut signOut = SignOut();
-                  signOut.signOut();
-                  Navigator.pushReplacementNamed(context, '/signin');
+                  SignOut(context: context).signOut();
                 },
                 buttonText: 'Sign Out',
               ),
