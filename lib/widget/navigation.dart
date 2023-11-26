@@ -3,9 +3,11 @@ import '../screens/home.dart';
 import '../screens/notification.dart';
 import '../screens/profile.dart';
 import '../screens/search.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class CustomFooterNavigationBarNew extends StatefulWidget {
-  const CustomFooterNavigationBarNew({super.key});
+  int? index;
+  CustomFooterNavigationBarNew({super.key, required this.index});
 
   @override
   State<CustomFooterNavigationBarNew> createState() =>
@@ -14,15 +16,19 @@ class CustomFooterNavigationBarNew extends StatefulWidget {
 
 class _CustomFooterNavigationBarNewState
     extends State<CustomFooterNavigationBarNew> {
-  int index = 0;
   final screens = [HomePage(), NotificationPage(), SearchPage(), ProfilePage()];
+
   @override
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
-
+    if (widget.index == null) {
+      setState(() {
+        widget.index = 0;
+      });
+    }
     return Scaffold(
-      body: screens[index],
+      body: screens[widget.index!],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
             indicatorColor: Colors.blue.shade200,
@@ -33,9 +39,9 @@ class _CustomFooterNavigationBarNewState
         child: NavigationBar(
             height: h * 0.08,
             backgroundColor: Color.fromRGBO(11, 55, 120, 1),
-            selectedIndex: index,
+            selectedIndex: widget.index!,
             onDestinationSelected: (index) => setState(() {
-                  this.index = index;
+                  this.widget.index = index;
                 }),
             destinations: [
               NavigationDestination(
@@ -64,7 +70,7 @@ class _CustomFooterNavigationBarNewState
                   Icons.person,
                   color: Colors.white,
                 ),
-                label: 'person',
+                label: 'profile',
               ),
             ]),
       ),

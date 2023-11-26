@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:termomete/main.dart';
+import 'package:termomete/model/user.dart';
+import 'package:termomete/services/create_user.dart';
 
 class SignUp {
   BuildContext contecxt;
@@ -14,10 +16,19 @@ class SignUp {
           builder: (contecxt) => Center(
                 child: CircularProgressIndicator(),
               ));
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
+      await CreateUser(
+              user: UserDetails(
+                  fname: "",
+                  lname: "",
+                  phoneNum: "",
+                  backUrl: "",
+                  profUrl: "",
+                  id: user.user!.uid))
+          .createUserFunc();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

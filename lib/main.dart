@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:termomete/screens/newEditPage.dart';
 
 import 'package:termomete/screens/onboarding_screen.dart';
 import 'package:termomete/services/google_sign_in.dart';
@@ -78,7 +79,10 @@ class _MyAppState extends State<MyApp> {
             '/language': (BuildContext context) => new LanguagePage(),
             '/about': (BuildContext context) => new AboutPage(),
             '/fdetails': (BuildContext context) => new FreezerDetails(),
-            '/bnavigation': (context) => CustomFooterNavigationBarNew(),
+            '/bnavigation': (context) => CustomFooterNavigationBarNew(
+                  index: 0,
+                ),
+            '/newProfile': (context) => NewProfilePage()
           },
           title: 'Termomete',
           theme: ThemeData(
@@ -99,7 +103,9 @@ class CurrentPage extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return CustomFooterNavigationBarNew();
+            return CustomFooterNavigationBarNew(
+              index: 0,
+            );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return CircularProgressIndicator();
           } else if (snapshot.hasError) {
