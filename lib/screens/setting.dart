@@ -111,7 +111,7 @@ class _SettingPageState extends State<SettingPage> {
                               },
                               child: CircleAvatar(
                                 radius: 70,
-                                backgroundImage: AssetImage('img/profile.jpg'),
+                                backgroundImage: AssetImage('img/profile.png'),
                               ),
                             ),
                           ),
@@ -208,14 +208,6 @@ class _SettingPageState extends State<SettingPage> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: CustomFooterNavigationBar(
-        selectedIndex: _selectedIndex,
-        onTabSelected: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
       ),
     );
   }
