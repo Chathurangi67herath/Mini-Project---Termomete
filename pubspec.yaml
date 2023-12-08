@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.0.5
   cloud_firestore: ^4.9.1
   firebase_storage: ^11.2.6
+  syncfusion_flutter_gauges: ^23.2.7
 
   # page indicator
   smooth_page_indicator: ^1.0.0+2

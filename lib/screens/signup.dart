@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:termomete/services/signUp_func.dart';
+import 'package:termomete/widget/Snackbar.dart';
 
 import '/widget/Custom_button.dart';
 import '/widget/Custom_passwordInput.dart';
@@ -142,10 +143,18 @@ class _SignupPageState extends State<SignupPage> {
                                   password: _passwordController.text);
                               await signup.signUp();
                             } else {
-                              debugPrint('Password doesnt match');
+                              ShowSnackBar(
+                                      data: 'Password doesnt match',
+                                      context: context)
+                                  .showSnack();
+                              // debugPrint('Password doesnt match');
                             }
                           } else {
-                            debugPrint('Email is empty or Use Strong password');
+                            ShowSnackBar(
+                                    data:
+                                        'Email is empty or Use Strong password',
+                                    context: context)
+                                .showSnack();
                           }
                         },
                         buttonText: 'Sign Up',

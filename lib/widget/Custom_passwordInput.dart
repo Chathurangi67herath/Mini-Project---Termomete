@@ -66,7 +66,7 @@ class _PasswordInputState extends State<PasswordInput> {
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
           suffixIcon: IconButton(
             icon:
-                Icon(passwordVisible ? Icons.visibility : Icons.visibility_off),
+                Icon(passwordVisible ? Icons.visibility_off : Icons.visibility),
             color: Color.fromRGBO(11, 55, 120, 1),
             onPressed: () {
               setState(
