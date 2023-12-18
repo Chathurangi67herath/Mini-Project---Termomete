@@ -129,7 +129,9 @@ class _LoginPageState extends State<LoginPage> {
                           Checkbox(
                             value: rememberMe,
                             onChanged: (newValue) {
-                              rememberMe = newValue!;
+                              setState(() {
+                                rememberMe = newValue!;
+                              });
                             },
                             shape: CircleBorder(),
                             activeColor: Colors.blue,
@@ -171,7 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                                 email: _emailController.text,
                                 password: _passwordController.text);
 
-                            login.login();
+                            login.login(context);
                           } else {
                             debugPrint("Email is empty or password is incalid");
                           }
